@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".OnboardingSatu">
+
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="394dp"
+        android:padding="50dp"
+        android:src="@drawable/Gambar1" />
+
+    <TextView
+        android:id="@+id/OnboardingTextSatu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="150dp"
+        android:text="@string/onboardingtextsatu"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/OnboardingDeskripsiSatu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="50dp"
+        android:paddingTop="10dp"
+        android:paddingRight="50dp"
+        android:text="@string/onboardingdeskripsi"
+        android:textSize="16sp" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <Button
+        android:layout_width="154dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        />
+
+    <Button
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+         />
+
+</LinearLayout>
+
+</LinearLayout>
