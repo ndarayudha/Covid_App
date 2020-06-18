@@ -2,5 +2,8 @@
     <string name="app_name">AppKp</string>
     <string name="onboardingtextsatu">Rencanakan Kesehatan</string>
     <string name="onboardingdeskripsi">Cek secara rutin kesehatan anda di layanan kesehatan terdekat</string>
+    <string name="textbutton1">Skip</string>
+    <string name="textbutton2">Next</string>
+
 
 </resources>
