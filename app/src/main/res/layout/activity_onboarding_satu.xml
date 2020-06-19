@@ -30,15 +30,14 @@
         android:id="@+id/OnboardingDeskripsi1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="50dp"
         android:layout_marginTop="10dp"
-        android:paddingRight="50dp"
         android:gravity="center"
-        android:textColor="@color/colorBlack"
+        android:paddingHorizontal="15dp"
         android:text="@string/deskripsi1"
+        android:textColor="@color/colorBlack"
         android:textSize="16sp" />
 
-<LinearLayout
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
