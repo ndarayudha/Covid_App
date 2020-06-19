@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="410dp"
         android:padding="50dp"
-        android:src="@drawable/Gambar2" />
+        android:src="@drawable/gambar2" />
 
     <TextView
         android:id="@+id/OnboardingText2"
