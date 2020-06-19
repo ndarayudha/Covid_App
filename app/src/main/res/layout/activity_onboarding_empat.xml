@@ -5,29 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".OnboardingSatu">
+    tools:context=".OnboardingEmpat">
 
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="410dp"
         android:padding="50dp"
-        android:src="@drawable/Gambar1" />
+        android:src="@drawable/Gambar4" />
 
     <TextView
-        android:id="@+id/OnboardingText1"
+        android:id="@+id/OnboardingText4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
-        android:text="@string/onboardingtext1"
-        android:textAlignment="center"
+        android:text="@string/onboardingtext4"
         android:textColor="@color/colorBlack"
+        android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/OnboardingDeskripsi1"
+        android:id="@+id/OnboardingDeskripsi4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="50dp"
@@ -35,7 +35,7 @@
         android:paddingRight="50dp"
         android:gravity="center"
         android:textColor="@color/colorBlack"
-        android:text="@string/deskripsi1"
+        android:text="@string/deskripsi4"
         android:textSize="16sp" />
 
 <LinearLayout
@@ -45,7 +45,7 @@
     android:orientation="horizontal">
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/button7"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="80dp"
@@ -54,7 +54,7 @@
         android:textColor="#005DAF"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button8"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
