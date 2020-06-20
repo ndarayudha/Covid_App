@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OnboardingTiga"></activity>
-        <activity android:name=".OnboardingDua"></activity>
-        <activity android:name=".OnboardingSatu">
+        <activity android:name=".ui.register.RegisterActivity"></activity>
+        <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name=".ui.OnboardingActivity" />
+        <activity android:name=".ui.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

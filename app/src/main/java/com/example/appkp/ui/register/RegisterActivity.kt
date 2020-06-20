@@ -1,11 +1,12 @@
-package com.example.appkp
+package com.example.appkp.ui.register
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.appkp.R
 
-class OnboardingSatu : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_onboarding_satu)
+        setContentView(R.layout.activity_register)
     }
 }
