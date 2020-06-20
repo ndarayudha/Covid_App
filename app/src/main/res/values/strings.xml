@@ -1,16 +1,36 @@
 <resources>
 
-<string name="app_name">AppKp</string>
-<string name="onboardingtext1">Rencanakan Kesehatan</string>
-<string name="onboardingtext2">Waspadai Sekitar Anda</string>
-<string name="onboardingtext3">Pengguna Sekitar</string>
-<string name="onboardingtext4">Cek Kadar O2</string>
-<string name="deskripsi1">Cek secara rutin kesehatan anda di layanan kesehatan terdekat</string>
-<string name="deskripsi2">Gunakan masker saat beraktifitas didalam maupun diluar</string>
-<string name="deskripsi3">Memantau pasien di sekitar anda </string>
-<string name="deskripsi4">Pantau kadar O2 terlarut dalam darah </string>
-<string name="textbutton1">Skip</string>
-<string name="textbutton2">Next</string>
+    <string name="app_name">AppKp</string>
+    <string name="textbutton1">Skip</string>
+    <string name="textbutton2">Next</string>
+    <string name="onboarding_btn_text_left">Skip</string>
+    <string name="onboarding_btn_text_right">Next</string>
+
+
+    <string-array name="onboardingTitle">
+        <item>Rencanakan Kesehatan</item>
+        <item>Waspadai Sekitar Anda</item>
+        <item>Pengguna Sekitar</item>
+        <item>Cek Kadar O2</item>
+    </string-array>
+
+
+    <string-array name="onboardingDescription">
+        <item>Cek secara rutin kesehatan anda di\nlayanan kesehatan terdekat</item>
+        <item>Gunakan masker saat beraktifitas\ndi dalam maupun diluar ruangan</item>
+        <item>Ketahui pengguna di sekitar anda</item>
+        <item>Pantau kadar O2 terlarut dalam darah</item>
+    </string-array>
+
+
+    <integer-array name="onboardingImages">
+        <item>@drawable/gambar1</item>
+        <item>@drawable/gambar2</item>
+        <item>@drawable/gambar3</item>
+        <item>@drawable/gambar4</item>
+    </integer-array>
+
+
 
 
 </resources>
