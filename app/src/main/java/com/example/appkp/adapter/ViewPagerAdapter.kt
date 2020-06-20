@@ -9,8 +9,8 @@ import kotlinx.android.synthetic.main.view_pager_item.view.*
 
 class ViewPagerAdapter(
     val images: List<Int>,
-    val title: List<String>,
-    val description: List<String>
+    val title: Array<String>,
+    val description: Array<String>
 ) : RecyclerView.Adapter<ViewPagerAdapter.PagerViewHolder>() {
 
 
