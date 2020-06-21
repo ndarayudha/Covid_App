@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import com.example.appkp.R
 import com.example.appkp.adapter.ViewPagerAdapter
-import com.example.appkp.ui.login.LoginScreenActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_onboarding.*
