@@ -12,13 +12,14 @@ class Preferences(context: Context){
     val sharePref = context.getSharedPreferences(PREF, PRIVATE_MODE)
 
 
-    private fun setValue(key: String, value: String){
-        val editor = sharePref.edit()
-        editor.putString(key, value)
-        editor.apply()
+    fun setValue(key: String, value: String){
+        val editor = sharePref.edit().apply {
+            putString(key, value)
+            apply()
+        }
     }
 
-    private fun getValue(key: String) : String? {
+    fun getValue(key: String) : String? {
         return sharePref.getString(key, "")
     }
 }

@@ -4,7 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.lifecycle.lifecycleScope
 import com.example.appkp.R
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,12 +16,10 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
 
-        val handler = Handler().apply {
-            postDelayed({
-                startActivity(Intent(this@SplashScreenActivity, OnboardingActivity::class.java))
-                finish()
-            }, 5000)
-
+        lifecycleScope.launch {
+            delay(5000L)
+            startActivity(Intent(this@SplashScreenActivity, OnboardingActivity::class.java))
+            finish()
         }
     }
 }

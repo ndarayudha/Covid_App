@@ -1,4 +1,4 @@
-package com.example.appkp.ui
+package com.example.appkp.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import com.example.appkp.R
 import com.example.appkp.adapter.ViewPagerAdapter
+import com.example.appkp.ui.auth.LoginScreenActivity
+import com.example.appkp.util.Preferences
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_onboarding.*
@@ -13,9 +15,20 @@ import kotlinx.android.synthetic.main.activity_onboarding.*
 class OnboardingActivity : AppCompatActivity() {
 
 
+    lateinit var preferences: Preferences
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)
+
+        preferences = Preferences(this)
+
+
+        if (preferences.getValue("firstLaunch").equals("first")){
+            startActivity(Intent(this, LoginScreenActivity::class.java))
+            finish()
+        }
 
 
         val images = listOf(
