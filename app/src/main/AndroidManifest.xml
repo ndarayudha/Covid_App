@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.register.RegisterScreenActivity"></activity>
-        <activity android:name=".ui.login.LoginScreenActivity" />
+        <activity android:name=".ui.auth.RegisterScreenActivity"/>
+        <activity android:name=".ui.auth.LoginScreenActivity" />
         <activity android:name=".ui.OnboardingActivity" />
         <activity android:name=".ui.SplashScreenActivity">
             <intent-filter>
