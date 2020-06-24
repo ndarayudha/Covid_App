@@ -1,5 +1,6 @@
 package com.example.appkp.ui.auth
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -33,6 +34,11 @@ class LoginScreenActivity : AppCompatActivity(), ILoginView {
             val email = edt_email.text.toString()
             val password = edt_password.text.toString()
             loginPresenter.onLogin(email, password)
+        }
+
+        tv_daftar.setOnClickListener {
+            startActivity(Intent(this@LoginScreenActivity, RegisterScreenActivity::class.java))
+
         }
     }
 
