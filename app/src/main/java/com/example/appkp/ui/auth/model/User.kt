@@ -4,18 +4,33 @@ import android.text.TextUtils
 import android.util.Patterns
 
 class User(
-    var email: String,
-    var password: String
+    var email: String? = null,
+    var password: String? = null
 ) : IUser {
 
 
-    override fun getUserEmail(): String {
+    var nama: String? = null
+
+
+    constructor(email: String, password: String, nama: String) : this(email, password){
+        this.nama = nama
+    }
+
+
+
+    override fun getUserEmail(): String? {
         return email
     }
 
-    override fun getUserPassword(): String {
+    override fun getUserPassword(): String? {
         return password
     }
+
+    override fun getName(): String? {
+        return nama
+    }
+
+
 
     override fun isValidData() : Int {
 
@@ -23,7 +38,7 @@ class User(
             0
         } else if(!Patterns.EMAIL_ADDRESS.matcher(getUserEmail()).matches()) {
             1
-        } else if(getUserPassword().length <= 6) {
+        } else if(getUserPassword()!!.length <= 6) {
             2
         } else {
             -1
