@@ -17,10 +17,7 @@ import com.example.appkp.ui.auth.view.IRegisterView
 import com.example.appkp.util.Constant
 import com.example.appkp.util.Preferences
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.android.synthetic.main.activity_register.edt_email
-import kotlinx.android.synthetic.main.activity_register.edt_password
 import org.json.JSONException
 import org.json.JSONObject
 

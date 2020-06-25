@@ -54,6 +54,7 @@
         android:textColor="#004FAF"
         app:layout_constraintBottom_toTopOf="@+id/edt_email"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -84,6 +85,7 @@
         android:textColor="#004FAF"
         app:layout_constraintBottom_toTopOf="@+id/edt_password"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_email" />
 
@@ -107,8 +109,8 @@
     <Button
         android:id="@+id/btn_login"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
         android:layout_gravity="center"
         android:layout_marginStart="120dp"
         android:layout_marginTop="16dp"
@@ -124,25 +126,27 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="0dp"
+        android:layout_width="152dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="105dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="87dp"
         android:gravity="center"
         android:text="Belum memiliki akun?"
         android:textColor="@color/colorBlack"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_daftar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
 
     <TextView
         android:id="@+id/tv_daftar"
-        android:layout_width="0dp"
+        android:layout_width="46dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginEnd="100dp"
         android:text="Daftar"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
