@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.android.volley.AuthFailureError
-import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -38,12 +37,14 @@ class LoginScreenActivity : AppCompatActivity(), ILoginView {
         preference.setValue("firstLaunch", "first")
 
 
+
         btn_login.setOnClickListener {
-            val email = edt_email.text.toString()
+            val email = edt_name.text.toString()
             val password = edt_password.text.toString()
 
+            val login = loginPresenter.onLogin(email, password)
 
-            if (loginPresenter.onLogin(email, password)){
+            if (login){
 
                 // Instantiate the RequestQueue.
                 queue = Volley.newRequestQueue(this@LoginScreenActivity)
@@ -63,7 +64,7 @@ class LoginScreenActivity : AppCompatActivity(), ILoginView {
                                     setValue("name", user.getString("name"))
                                     setValue("photo", user.getString("photo"))
 
-                                    Toast.makeText(this@LoginScreenActivity, "Login suceess", Toast.LENGTH_SHORT).show()
+                                    onLoginSuccess("Login Success")
                                 }
                             }
                         } catch (e: JSONException) {
@@ -72,6 +73,7 @@ class LoginScreenActivity : AppCompatActivity(), ILoginView {
 
                     }, Response.ErrorListener {
                         it.printStackTrace()
+                        onLoginError("Login Failed")
                     }) {
 
                         @Throws(AuthFailureError::class)

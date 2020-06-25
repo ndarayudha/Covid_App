@@ -15,10 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="m">
-        <activity android:name=".ui.auth.RegisterScreenActivity"/>
-        <activity android:name=".ui.auth.LoginScreenActivity" />
-        <activity android:name=".ui.OnboardingActivity" />
-        <activity android:name=".ui.SplashScreenActivity">
+        <activity android:name=".ui.auth.RegisterScreenActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.auth.LoginScreenActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.OnboardingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.SplashScreenActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

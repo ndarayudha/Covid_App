@@ -1,17 +1,9 @@
 package com.example.appkp.ui.auth.presenter
 
-import android.content.Context
-import android.widget.Toast
-import com.android.volley.*
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
+
 import com.example.appkp.ui.auth.model.User
-import com.example.appkp.ui.auth.view.ILoginView
 import com.example.appkp.ui.auth.view.IRegisterView
-import com.example.appkp.util.Constant
-import com.example.appkp.util.Preferences
-import org.json.JSONException
-import org.json.JSONObject
+
 
 class RegisterPresenter(
     val registerView: IRegisterView
@@ -35,6 +27,10 @@ class RegisterPresenter(
             }
             2 -> {
                 registerView.onRegisterError("Password length must be greater than 6")
+                return false
+            }
+            3 -> {
+                registerView.onRegisterError("You must enter your full name")
                 return false
             }
             else -> {

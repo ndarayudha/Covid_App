@@ -37,13 +37,13 @@
             android:layout_marginEnd="50dp"
             android:text="Nama Lengkap"
             android:textColor="@color/colorBlack"
-            app:layout_constraintBottom_toTopOf="@+id/edt_email"
+            app:layout_constraintBottom_toTopOf="@+id/edt_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <EditText
-            android:id="@+id/edt_name"
+            android:id="@+id/edt_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -66,13 +66,13 @@
             android:layout_marginEnd="50dp"
             android:text="Email"
             android:textColor="@color/colorBlack"
-            app:layout_constraintBottom_toTopOf="@+id/edt_name"
+            app:layout_constraintBottom_toTopOf="@+id/edt_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_email" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_name" />
 
         <EditText
-            android:id="@+id/edt_email"
+            android:id="@+id/edt_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -98,7 +98,7 @@
             app:layout_constraintBottom_toTopOf="@+id/edt_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_name" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_email" />
 
         <EditText
             android:id="@+id/edt_password"

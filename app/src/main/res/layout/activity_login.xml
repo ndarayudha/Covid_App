@@ -52,7 +52,7 @@
         android:layout_marginEnd="240dp"
         android:text="@string/et_email"
         android:textColor="#004FAF"
-        app:layout_constraintBottom_toTopOf="@+id/edt_email"
+        app:layout_constraintBottom_toTopOf="@+id/edt_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
 
 
     <EditText
-        android:id="@+id/edt_email"
+        android:id="@+id/edt_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_email" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_name" />
 
 
     <EditText
