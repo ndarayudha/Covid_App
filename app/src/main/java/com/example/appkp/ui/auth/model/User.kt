@@ -40,7 +40,9 @@ class User(
             1
         } else if(getUserPassword()!!.length <= 6) {
             2
-        } else {
+        } else if(TextUtils.isEmpty(getName())) {
+            3
+        }else {
             -1
         }
     }

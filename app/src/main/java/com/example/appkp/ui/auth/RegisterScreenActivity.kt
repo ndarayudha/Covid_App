@@ -4,15 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.android.volley.AuthFailureError
-import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.appkp.R
-import com.example.appkp.ui.auth.presenter.LoginPresenter
 import com.example.appkp.ui.auth.presenter.RegisterPresenter
-import com.example.appkp.ui.auth.view.ILoginView
 import com.example.appkp.ui.auth.view.IRegisterView
 import com.example.appkp.util.Constant
 import com.example.appkp.util.Preferences
@@ -26,6 +23,7 @@ class RegisterScreenActivity : AppCompatActivity(), IRegisterView {
     lateinit var registerPresenter: RegisterPresenter
     lateinit var preference: Preferences
     lateinit var queue: RequestQueue
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,9 +40,10 @@ class RegisterScreenActivity : AppCompatActivity(), IRegisterView {
             val password = edt_password.text.toString()
             val name = edt_name.text.toString()
 
+            val register = registerPresenter.onRegister(email, password, name)
 
-            if (registerPresenter.onRegister(email, password, name)){
 
+            if (register){
                 // Instantiate the RequestQueue.
                 queue = Volley.newRequestQueue(this@RegisterScreenActivity)
                 val url = Constant.REGISTER
@@ -63,9 +62,9 @@ class RegisterScreenActivity : AppCompatActivity(), IRegisterView {
                                     setValue("name", user.getString("name"))
                                     setValue("photo", user.getString("photo"))
 
-
-                                    Toast.makeText(this@RegisterScreenActivity, "Register suceess", Toast.LENGTH_SHORT).show()
+                                    onRegisterSuccess("Register Success")
                                 }
+
                             }
                         } catch (e: JSONException) {
                             e.printStackTrace()
@@ -73,6 +72,7 @@ class RegisterScreenActivity : AppCompatActivity(), IRegisterView {
 
                     }, Response.ErrorListener {
                         it.printStackTrace()
+                        onRegisterError("Register Failed")
                     }) {
 
                         @Throws(AuthFailureError::class)
