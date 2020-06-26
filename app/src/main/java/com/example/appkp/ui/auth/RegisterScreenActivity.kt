@@ -1,5 +1,6 @@
 package com.example.appkp.ui.auth
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +10,8 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.appkp.R
+import com.example.appkp.ui.OnboardingActivity
+import com.example.appkp.ui.PhotoScreenActivity
 import com.example.appkp.ui.auth.presenter.RegisterPresenter
 import com.example.appkp.ui.auth.view.IRegisterView
 import com.example.appkp.util.Constant
@@ -61,10 +64,13 @@ class RegisterScreenActivity : AppCompatActivity(), IRegisterView {
                                     setValue("token", obj.getString("token"))
                                     setValue("name", user.getString("name"))
                                     setValue("photo", user.getString("photo"))
+                                    setValue("isLoggedIn", "true")
 
                                     onRegisterSuccess("Register Success")
-                                }
 
+                                    startActivity(Intent(this@RegisterScreenActivity.applicationContext, PhotoScreenActivity::class.java))
+                                    finishAffinity()
+                                }
                             }
                         } catch (e: JSONException) {
                             e.printStackTrace()
@@ -87,9 +93,7 @@ class RegisterScreenActivity : AppCompatActivity(), IRegisterView {
                 // Add the request to the RequestQueue.
                 queue.add(stringRequest)
             }
-
         }
-
     }
 
     override fun onRegisterSuccess(message: String) {
