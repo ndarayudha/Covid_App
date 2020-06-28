@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.lifecycle.lifecycleScope
 import com.example.appkp.R
+import com.example.appkp.ui.dashboard.DashboardActivity
 import com.example.appkp.util.Preferences
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -27,12 +28,15 @@ class SplashScreenActivity : AppCompatActivity() {
             delay(5000L)
 
 
-            if (preference.getValue("isLoggedIn").equals("true")){
-                startActivity(Intent(this@SplashScreenActivity, PhotoScreenActivity::class.java))
-                finish()
-            } else {
-                startActivity(Intent(this@SplashScreenActivity, OnboardingActivity::class.java))
-                finish()
+            when {
+                preference.getValue("isLoggedIn").equals("true") -> {
+                    startActivity(Intent(this@SplashScreenActivity, PhotoScreenActivity::class.java))
+                    finish()
+                }
+                else -> {
+                    startActivity(Intent(this@SplashScreenActivity, OnboardingActivity::class.java))
+                    finish()
+                }
             }
 
         }
