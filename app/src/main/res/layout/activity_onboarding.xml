@@ -11,8 +11,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible">
-    </com.google.android.material.tabs.TabLayout>
+        android:visibility="invisible"></com.google.android.material.tabs.TabLayout>
 
 
     <androidx.viewpager2.widget.ViewPager2
@@ -34,7 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:text="@string/onboarding_btn_text_left" />
+            android:text="@string/onboarding_btn_text_left"
+            android:textColor="@color/colorPrimary" />
 
         <Button
             android:id="@+id/btnRight"
@@ -42,10 +42,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:background="@android:color/transparent"
-            android:text="@string/onboarding_btn_text_right" />
+            android:text="@string/onboarding_btn_text_right"
+            android:textColor="@color/colorPrimary" />
 
     </RelativeLayout>
-
 
 
 </RelativeLayout>

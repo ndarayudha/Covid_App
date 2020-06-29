@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.PhotoScreenActivity"></activity>
+        <activity android:name=".ui.dashboard.DashboardActivity"></activity>
+        <activity android:name=".ui.PhotoScreenActivity" />
         <activity
             android:name=".ui.auth.RegisterScreenActivity"
             android:screenOrientation="portrait" />
