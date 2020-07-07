@@ -3,14 +3,15 @@ package com.example.appkp.ui.auth
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.Toast
 import com.android.volley.AuthFailureError
-import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.appkp.R
+import com.example.appkp.ui.PhotoScreenActivity
 import com.example.appkp.ui.auth.presenter.LoginPresenter
 import com.example.appkp.ui.auth.view.ILoginView
 import com.example.appkp.util.Constant
@@ -38,12 +39,14 @@ class LoginScreenActivity : AppCompatActivity(), ILoginView {
         preference.setValue("firstLaunch", "first")
 
 
+
         btn_login.setOnClickListener {
-            val email = edt_email.text.toString()
+            val email = edt_name.text.toString()
             val password = edt_password.text.toString()
 
+            val login = loginPresenter.onLogin(email, password)
 
-            if (loginPresenter.onLogin(email, password)){
+            if (login){
 
                 // Instantiate the RequestQueue.
                 queue = Volley.newRequestQueue(this@LoginScreenActivity)
@@ -62,8 +65,12 @@ class LoginScreenActivity : AppCompatActivity(), ILoginView {
                                     setValue("token", obj.getString("token"))
                                     setValue("name", user.getString("name"))
                                     setValue("photo", user.getString("photo"))
+                                    setValue("isLoggedIn", "true")
 
-                                    Toast.makeText(this@LoginScreenActivity, "Login suceess", Toast.LENGTH_SHORT).show()
+                                    onLoginSuccess("Login Success")
+
+                                    startActivity(Intent(this@LoginScreenActivity.applicationContext, PhotoScreenActivity::class.java))
+                                    finishAffinity()
                                 }
                             }
                         } catch (e: JSONException) {
@@ -72,6 +79,7 @@ class LoginScreenActivity : AppCompatActivity(), ILoginView {
 
                     }, Response.ErrorListener {
                         it.printStackTrace()
+                        onLoginError("Login Failed")
                     }) {
 
                         @Throws(AuthFailureError::class)

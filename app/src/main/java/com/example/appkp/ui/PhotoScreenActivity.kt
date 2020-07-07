@@ -1,0 +1,173 @@
+package com.example.appkp.ui
+
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Base64
+import android.view.View
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.example.appkp.R
+import com.example.appkp.ui.auth.view.IToasty
+import com.example.appkp.ui.dashboard.DashboardActivity
+import com.example.appkp.util.Constant
+import com.example.appkp.util.Preferences
+import es.dmoral.toasty.Toasty
+import kotlinx.android.synthetic.main.activity_photo_screen.*
+import org.json.JSONException
+import org.json.JSONObject
+import java.io.ByteArrayOutputStream
+
+class PhotoScreenActivity : AppCompatActivity(), IToasty {
+
+
+    private var bitmap: Bitmap? = null
+    private var statusAdd: Boolean = false
+    lateinit var queue: RequestQueue
+    lateinit var preferences: Preferences
+
+
+    companion object {
+        const val GALLERY_ADD_PROFILE = 1
+    }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_photo_screen)
+
+
+        preferences = Preferences(this)
+
+
+        if (preferences.getValue("inDashboard").equals("true")){
+            startActivity(Intent(this, DashboardActivity::class.java))
+            finishAffinity()
+        }
+
+
+        initBtn()
+
+        iv_add.setOnClickListener {
+            if (statusAdd){
+                statusAdd = false
+                btn_simpan_lanjutkan.visibility = View.INVISIBLE
+                iv_add.setImageResource(R.drawable.plus)
+                iv_profile.setImageResource(R.drawable.userimage)
+            } else {
+                Intent(Intent.ACTION_PICK).also {
+                    it.type = "image/*"
+                    startActivityForResult(it, GALLERY_ADD_PROFILE)
+                }
+            }
+        }
+    }
+
+
+
+    private fun initBtn(){
+        btn_lanjutkan.setOnClickListener {
+            startActivity(Intent(this, DashboardActivity::class.java))
+            finishAffinity()
+        }
+
+        btn_simpan_lanjutkan.setOnClickListener {
+            saveUserPhoto()
+            startActivity(Intent(this, DashboardActivity::class.java))
+            onSuccess("Upload photo success")
+            finishAffinity()
+        }
+    }
+
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == GALLERY_ADD_PROFILE && resultCode == Activity.RESULT_OK){
+
+            statusAdd = true
+
+            data?.let {
+                bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, it.data)
+
+                iv_profile.setImageBitmap(bitmap)
+            }
+
+            btn_simpan_lanjutkan.visibility = View.VISIBLE
+            iv_add.setImageResource(R.drawable.x)
+        }
+    }
+
+
+
+    private fun saveUserPhoto(){
+        queue = Volley.newRequestQueue(this)
+        val url = Constant.SAVE_USER_PHOTO
+
+        val stringRequest = object : StringRequest(Method.POST, url, Response.Listener {response->
+
+            try {
+                val obj = JSONObject(response)
+                if (obj.getBoolean("success")) {
+                    // masukan kedalam sharePrefrence
+                    preferences.setValue("photo", obj.getString("photo"))
+
+                }
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+
+        }, Response.ErrorListener {
+
+        }) {
+            // add token to header
+            override fun getHeaders(): MutableMap<String, String> {
+                val token = preferences.getValue("token")
+
+                val header = HashMap<String, String>()
+                header["Authorization"] = "Bearer $token"
+                return header
+            }
+
+
+            override fun getParams(): MutableMap<String, String> {
+                val param = HashMap<String, String>()
+                param["photo"] = bitmapToString(bitmap)
+                return param
+            }
+        }
+
+        queue.add(stringRequest)
+    }
+
+
+    private fun bitmapToString(bitmap: Bitmap?): String {
+        if (bitmap != null){
+            val byteArrayOutputStream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+            val array: ByteArray = byteArrayOutputStream.toByteArray()
+
+
+            return Base64.encodeToString(array, Base64.DEFAULT)
+        }
+
+        return ""
+    }
+
+
+    override fun onSuccess(message: String) {
+        Toasty.success(this, message, Toasty.LENGTH_SHORT).show()
+    }
+
+    override fun onError(message: String) {
+        Toasty.error(this, message, Toasty.LENGTH_SHORT).show()
+    }
+
+
+}
