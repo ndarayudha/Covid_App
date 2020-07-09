@@ -16,7 +16,7 @@
         tools:layout="@layout/fragment_article" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.appkp.ui.dashboard.fragment.ProfileFragment"
+        android:name="com.example.appkp.ui.dashboard.fragment.SettingFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

@@ -34,8 +34,9 @@
         <item>@drawable/gambar3</item>
         <item>@drawable/gambar4</item>
     </integer-array>
+
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="riwayat">Riwayat</string>
 
 
     <string-array name="jenisKelamin">
@@ -43,7 +44,6 @@
         <item>Perempuan</item>
         <item>Lainnya</item>
     </string-array>
-
 
 
 </resources>
