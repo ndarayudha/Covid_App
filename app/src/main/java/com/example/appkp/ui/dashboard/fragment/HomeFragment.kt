@@ -12,7 +12,7 @@ import com.example.appkp.R
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.reflect.KClass
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,18 +21,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        progressBar.apply{
-//            progressMax = 100f
-//            setProgressWithAnimation(50f, 1000)
-//            progressBarWidth = 5f
-//            backgroundProgressBarWidth = 7f
-//            progressBarColor = Color.GREEN
-//        }
-//    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        progressBar.apply{
+            progressMax = 100f
+            setProgressWithAnimation(50f, 1000)
+            progressBarWidth = 5f
+            backgroundProgressBarWidth = 7f
+            progressBarColor = Color.GREEN
+        }
+    }
 
 
     }

@@ -49,7 +49,6 @@ dependencies {
 
 
     //progrss bar circle
-    implementation 'com.aseem.versatileprogressbar:MultiProgressBar:1.1.0'
     implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
 
     //Circle Image View
