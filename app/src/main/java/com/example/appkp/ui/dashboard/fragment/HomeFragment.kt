@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.appkp.R
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.reflect.KClass
 
@@ -28,9 +29,11 @@ class HomeFragment : Fragment() {
         progressBar.apply{
             progressMax = 100f
             setProgressWithAnimation(50f, 1000)
-            progressBarWidth = 5f
-            backgroundProgressBarWidth = 7f
-            progressBarColor = Color.GREEN
+            progressBarWidth = 10f
+            backgroundProgressBarWidth = 15f
+            progressBarColor = Color.rgb(0,255,255)
+            backgroundProgressBarColor = Color.rgb(0, 0, 0)
+
         }
     }
 
