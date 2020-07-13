@@ -31,12 +31,7 @@ class OnboardingActivity : AppCompatActivity() {
         }
 
 
-        val images = listOf(
-            R.drawable.gambar1,
-            R.drawable.gambar2,
-            R.drawable.gambar3,
-            R.drawable.gambar4
-        )
+        val images = resources.obtainTypedArray(R.array.onboardingImages)
         val title = resources.getStringArray(R.array.onboardingTitle)
         val description = resources.getStringArray(R.array.onboardingDescription)
 

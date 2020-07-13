@@ -28,12 +28,12 @@
     </string-array>
 
 
-    <integer-array name="onboardingImages">
+    <string-array name="onboardingImages">
         <item>@drawable/gambar1</item>
         <item>@drawable/gambar2</item>
         <item>@drawable/gambar3</item>
         <item>@drawable/gambar4</item>
-    </integer-array>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="riwayat">Riwayat</string>

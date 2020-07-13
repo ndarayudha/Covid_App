@@ -13,7 +13,9 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.appkp.R
-import com.example.appkp.ui.auth.view.IToasty
+import com.example.appkp.api.RetrofitBuilder
+import com.example.appkp.model.UserPhoto
+import com.example.appkp.ui.auth.view.IResult
 import com.example.appkp.ui.dashboard.DashboardActivity
 import com.example.appkp.util.Constant
 import com.example.appkp.util.Preferences
@@ -21,9 +23,11 @@ import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_photo_screen.*
 import org.json.JSONException
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
 import java.io.ByteArrayOutputStream
 
-class PhotoScreenActivity : AppCompatActivity(), IToasty {
+class PhotoScreenActivity : AppCompatActivity(), IResult {
 
 
     private var bitmap: Bitmap? = null
@@ -77,7 +81,8 @@ class PhotoScreenActivity : AppCompatActivity(), IToasty {
         }
 
         btn_simpan_lanjutkan.setOnClickListener {
-            saveUserPhoto()
+//            saveUserPhoto()
+            saveUserPhoto2()
             startActivity(Intent(this, DashboardActivity::class.java))
             onSuccess("Upload photo success")
             finishAffinity()
@@ -105,45 +110,34 @@ class PhotoScreenActivity : AppCompatActivity(), IToasty {
     }
 
 
+    private fun saveUserPhoto2(){
+        val token = preferences.getValue("token")
 
-    private fun saveUserPhoto(){
-        queue = Volley.newRequestQueue(this)
-        val url = Constant.SAVE_USER_PHOTO
+        RetrofitBuilder.api.savePhoto(bitmapToString(bitmap), "Bearer $token")
+            .enqueue(object : Callback<UserPhoto> {
 
-        val stringRequest = object : StringRequest(Method.POST, url, Response.Listener {response->
-
-            try {
-                val obj = JSONObject(response)
-                if (obj.getBoolean("success")) {
-                    // masukan kedalam sharePrefrence
-                    preferences.setValue("photo", obj.getString("photo"))
+                override fun onFailure(call: Call<UserPhoto>, t: Throwable) {
 
                 }
-            } catch (e: JSONException) {
-                e.printStackTrace()
-            }
 
-        }, Response.ErrorListener {
+                override fun onResponse(
+                    call: Call<UserPhoto>,
+                    response: retrofit2.Response<UserPhoto>
+                ) {
+                    try {
+                        val success = response.body()?.success
+                        val photo = response.body()?.photo
 
-        }) {
-            // add token to header
-            override fun getHeaders(): MutableMap<String, String> {
-                val token = preferences.getValue("token")
+                        if (success!!){
+                            preferences.setValue("photo", photo!!)
+                        }
 
-                val header = HashMap<String, String>()
-                header["Authorization"] = "Bearer $token"
-                return header
-            }
+                    } catch (e: JSONException){
 
+                    }
+                }
 
-            override fun getParams(): MutableMap<String, String> {
-                val param = HashMap<String, String>()
-                param["photo"] = bitmapToString(bitmap)
-                return param
-            }
-        }
-
-        queue.add(stringRequest)
+            })
     }
 
 
