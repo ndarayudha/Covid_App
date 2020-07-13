@@ -35,8 +35,6 @@ class SettingFragment : Fragment() {
                 addToBackStack(null)
                 commit()
             }
-
-
         }
     }
 

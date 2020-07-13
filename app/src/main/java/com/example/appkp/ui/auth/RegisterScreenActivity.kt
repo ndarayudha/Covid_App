@@ -3,30 +3,26 @@ package com.example.appkp.ui.auth
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
-import com.android.volley.AuthFailureError
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.example.appkp.R
-import com.example.appkp.ui.OnboardingActivity
+import com.example.appkp.api.RetrofitBuilder
+import com.example.appkp.model.UserResponse
 import com.example.appkp.ui.PhotoScreenActivity
 import com.example.appkp.ui.auth.presenter.RegisterPresenter
-import com.example.appkp.ui.auth.view.IRegisterView
-import com.example.appkp.util.Constant
+import com.example.appkp.ui.auth.view.IResult
 import com.example.appkp.util.Preferences
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_register.*
 import org.json.JSONException
-import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
 
-class RegisterScreenActivity : AppCompatActivity(), IRegisterView {
+class RegisterScreenActivity : AppCompatActivity(), IResult {
 
     lateinit var registerPresenter: RegisterPresenter
     lateinit var preference: Preferences
-    lateinit var queue: RequestQueue
-
+    private val TAG = "RegiterTag"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,64 +41,59 @@ class RegisterScreenActivity : AppCompatActivity(), IRegisterView {
 
             val register = registerPresenter.onRegister(email, password, name)
 
+            if (register) {
+                RetrofitBuilder.api.onRegister(email, name, password)
+                    .enqueue(object : Callback<UserResponse> {
 
-            if (register){
-                // Instantiate the RequestQueue.
-                queue = Volley.newRequestQueue(this@RegisterScreenActivity)
-                val url = Constant.REGISTER
+                        override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                            onError("Login Failed")
+                        }
 
-                // Request a string response from the provided URL.
-                val stringRequest =
-                    object : StringRequest(Method.POST, url, Response.Listener<String> { response ->
+                        override fun onResponse(
+                            call: Call<UserResponse>,
+                            response: retrofit2.Response<UserResponse>
+                        ) {
+                            try {
+                                val success = response.body()?.success
+                                if (success!!) {
+                                    val name = response.body()?.user!!.name
+                                    val token = response.body()?.token
 
-                        try {
-                            val obj = JSONObject(response)
-                            if (obj.getBoolean("success")) {
-                                val user = obj.getJSONObject("user")
-                                // masukan kedalam sharePrefrence
-                                preference = Preferences(this@RegisterScreenActivity).apply {
-                                    setValue("token", obj.getString("token"))
-                                    setValue("name", user.getString("name"))
-                                    setValue("photo", user.getString("photo"))
-                                    setValue("isLoggedIn", "true")
+                                    
+                                    preference = Preferences(this@RegisterScreenActivity).apply {
+                                        setValue("token", token!!)
+                                        setValue("name", name)
+                                        setValue("isLoggedIn", "true")
 
-                                    onRegisterSuccess("Register Success")
+                                        onSuccess("Register Success")
 
-                                    startActivity(Intent(this@RegisterScreenActivity.applicationContext, PhotoScreenActivity::class.java))
-                                    finishAffinity()
+                                        startActivity(
+                                            Intent(
+                                                this@RegisterScreenActivity.applicationContext,
+                                                PhotoScreenActivity::class.java
+                                            )
+                                        )
+                                        finishAffinity()
+                                    }
                                 }
+
+                            } catch (e: JSONException) {
+                                Log.d(TAG, e.printStackTrace().toString())
                             }
-                        } catch (e: JSONException) {
-                            e.printStackTrace()
                         }
-
-                    }, Response.ErrorListener {
-                        it.printStackTrace()
-                        onRegisterError("Register Failed")
-                    }) {
-
-                        @Throws(AuthFailureError::class)
-                        override fun getParams(): Map<String, String> {
-                            val params = HashMap<String, String>()
-                            params["email"] = email
-                            params["password"] = password
-                            params["name"] = name
-                            return params
-                        }
-                    }
-                // Add the request to the RequestQueue.
-                queue.add(stringRequest)
+                    })
             }
         }
+
     }
 
-    override fun onRegisterSuccess(message: String) {
+
+    override fun onSuccess(message: String) {
         Toasty.success(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onRegisterError(message: String) {
+    override fun onError(message: String) {
         Toasty.error(this, message, Toast.LENGTH_SHORT).show()
     }
-
 
 }

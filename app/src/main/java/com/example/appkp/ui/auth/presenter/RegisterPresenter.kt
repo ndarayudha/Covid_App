@@ -2,11 +2,11 @@ package com.example.appkp.ui.auth.presenter
 
 
 import com.example.appkp.ui.auth.model.User
-import com.example.appkp.ui.auth.view.IRegisterView
+import com.example.appkp.ui.auth.view.IResult
 
 
 class RegisterPresenter(
-    val registerView: IRegisterView
+    val registerView: IResult
 ) : IRegisterPresenter {
 
     lateinit var user: User
@@ -18,19 +18,19 @@ class RegisterPresenter(
 
         when (loginCode) {
             0 -> {
-                registerView.onRegisterError("You must enter your email")
+                registerView.onError("You must enter your email")
                 return false
             }
             1 -> {
-                registerView.onRegisterError("You must enter valid email")
+                registerView.onError("You must enter valid email")
                 return false
             }
             2 -> {
-                registerView.onRegisterError("Password length must be greater than 6")
+                registerView.onError("Password length must be greater than 6")
                 return false
             }
             3 -> {
-                registerView.onRegisterError("You must enter your full name")
+                registerView.onError("You must enter your full name")
                 return false
             }
             else -> {

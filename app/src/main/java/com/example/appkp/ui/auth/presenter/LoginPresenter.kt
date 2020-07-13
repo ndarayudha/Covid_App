@@ -2,11 +2,11 @@ package com.example.appkp.ui.auth.presenter
 
 
 import com.example.appkp.ui.auth.model.User
-import com.example.appkp.ui.auth.view.ILoginView
+import com.example.appkp.ui.auth.view.IResult
 
 
 class LoginPresenter(
-    val loginView: ILoginView
+    val loginView: IResult
 ) : ILoginPresenter {
 
     lateinit var user: User
@@ -18,15 +18,15 @@ class LoginPresenter(
 
         when (loginCode) {
             0 -> {
-                loginView.onLoginError("You must enter your email")
+                loginView.onSuccess("You must enter your email")
                 return false
             }
             1 -> {
-                loginView.onLoginError("You must enter valid email")
+                loginView.onError("You must enter valid email")
                 return false
             }
             2 -> {
-                loginView.onLoginError("Password length must be greater than 6")
+                loginView.onError("Password length must be greater than 6")
                 return false
             }
             else -> {
