@@ -3,31 +3,23 @@ package com.example.appkp.ui.auth
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
-import com.android.volley.AuthFailureError
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.example.appkp.R
 import com.example.appkp.api.RetrofitBuilder
-import com.example.appkp.model.UserResponse
+import com.example.appkp.model.AuthResponse
 import com.example.appkp.ui.PhotoScreenActivity
 import com.example.appkp.ui.auth.presenter.LoginPresenter
 import com.example.appkp.ui.auth.view.IResult
-import com.example.appkp.util.Constant
 import com.example.appkp.util.Preferences
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.edt_name
 import kotlinx.android.synthetic.main.activity_login.edt_password
-import kotlinx.android.synthetic.main.activity_register.*
 import org.json.JSONException
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.Response
 
 class LoginScreenActivity : AppCompatActivity(), IResult {
 
@@ -56,18 +48,19 @@ class LoginScreenActivity : AppCompatActivity(), IResult {
 
             if (login) {
                 RetrofitBuilder.api.onLogin(email, password)
-                    .enqueue(object : Callback<UserResponse> {
-
-                        override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                    .enqueue(object : Callback<AuthResponse> {
+                        override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
                             onError("Login Failed")
                         }
 
                         override fun onResponse(
-                            call: Call<UserResponse>,
-                            response: retrofit2.Response<UserResponse>
+                            call: Call<AuthResponse>,
+                            response: Response<AuthResponse>
                         ) {
+
                             try {
                                 val success = response.body()?.success
+
                                 if (success!!) {
                                     val name = response.body()?.user!!.name
                                     val token = response.body()?.token
@@ -87,29 +80,34 @@ class LoginScreenActivity : AppCompatActivity(), IResult {
                                         )
                                         finishAffinity()
                                     }
+                                } else {
+                                    onError(response.body()!!.message)
                                 }
 
-                            } catch (e: JSONException) {
-                                Log.d(TAG, e.printStackTrace().toString())
+                            } catch (e: NullPointerException) {
+                                onError(e.message!!)
                             }
+
+
                         }
+
                     })
+            }
+
+
+            tv_daftar.setOnClickListener {
+                startActivity(Intent(this, RegisterScreenActivity::class.java))
             }
         }
 
-
-        tv_daftar.setOnClickListener{
-            startActivity(Intent(this, RegisterScreenActivity::class.java))
-        }
     }
 
-
     override fun onSuccess(message: String) {
-        Toasty.success(this, message, Toast.LENGTH_SHORT).show()
+        Toasty.success(this, message, Toasty.LENGTH_SHORT).show()
     }
 
     override fun onError(message: String) {
-        Toasty.error(this, message, Toast.LENGTH_SHORT).show()
+        Toasty.error(this, message, Toasty.LENGTH_SHORT).show()
     }
 
 }

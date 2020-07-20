@@ -3,7 +3,9 @@ package com.example.appkp.model
 
 import com.google.gson.annotations.SerializedName
 
-data class UserPhoto(
+data class UserPhotoResponse(
+    @SerializedName("message")
+    val message: String,
     @SerializedName("photo")
     val photo: String,
     @SerializedName("success")

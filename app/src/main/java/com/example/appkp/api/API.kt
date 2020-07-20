@@ -1,7 +1,7 @@
 package com.example.appkp.api
 
-import com.example.appkp.model.UserPhoto
-import com.example.appkp.model.UserResponse
+import com.example.appkp.model.AuthResponse
+import com.example.appkp.model.UserPhotoResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -17,7 +17,7 @@ interface API {
         @Field("email") email: String,
         @Field("name") name: String,
         @Field("password") password: String
-    ) : Call<UserResponse>
+    ) : Call<AuthResponse>
 
 
     @FormUrlEncoded
@@ -25,13 +25,13 @@ interface API {
     fun onLogin(
         @Field("email") email: String,
         @Field("password") password: String
-    ) : Call<UserResponse>
+    ) : Call<AuthResponse>
 
 
     @FormUrlEncoded
-    @POST("save_user_photo")
+    @POST("api/save_user_photo")
     fun savePhoto(
         @Field("photo") photo : String,
         @Header("Authorization") token: String
-    ) : Call<UserPhoto>
+    ) : Call<UserPhotoResponse>
 }
