@@ -6,37 +6,78 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.fragment.HomeFragment">
 
-    <!--    <com.google.android.material.card.MaterialCardView-->
-    <!--        android:id="@+id/materialCardView"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="200dp"-->
-    <!--        android:background="@drawable/backgroud_top_home"-->
-    <!--        app:cardElevation="10dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <androidx.cardview.widget.CardView
         android:id="@+id/home_CardView"
         android:layout_width="0dp"
-        android:layout_height="200dp"
-
+        android:layout_height="180dp"
+        android:background="@drawable/backgroud_top_home"
         app:cardBackgroundColor="@color/colorPrimary"
         app:cardElevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="30dp"
+                android:text="Pulse Oxymetri"
+                android:textColor="@color/colorWhite"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:text="John"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profilImage_home"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilImage_home"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="35dp"
+                android:src="@drawable/userimage"
+                app:civ_border_color="@color/colorWhite"
+                app:civ_border_width="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView15"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-
-        android:layout_marginTop="43dp"
-        android:layout_marginBottom="288dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/cardView"
+        android:layout_width="350dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_CardView">
 
@@ -45,10 +86,46 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginLeft="50dp"
-
-            app:cpb_background_progressbar_color_start="@color/colorPrimary"
-            app:cpb_background_progressbar_color_end="@color/colorPrimaryDark"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="15dp"
+            app:cpb_progress_max="100"
+            app:cpb_round_border="true"
+            app:cpb_progressbar_color="#0091EA"
+            app:cpb_background_progressbar_width="7dp"
+            app:cpb_background_progressbar_color="@color/colorGrayLight" />
 
     </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_InfoCovid"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_Maps"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="@color/colorGrayLight"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_InfoCovid"
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="350dp"
+            android:layout_height="150dp" />
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
