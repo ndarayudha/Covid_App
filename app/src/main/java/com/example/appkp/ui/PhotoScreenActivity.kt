@@ -8,21 +8,15 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
 import android.view.View
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.example.appkp.R
 import com.example.appkp.api.RetrofitBuilder
-import com.example.appkp.model.UserPhoto
+import com.example.appkp.model.UserPhotoResponse
 import com.example.appkp.ui.auth.view.IResult
 import com.example.appkp.ui.dashboard.DashboardActivity
-import com.example.appkp.util.Constant
 import com.example.appkp.util.Preferences
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_photo_screen.*
 import org.json.JSONException
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import java.io.ByteArrayOutputStream
@@ -32,7 +26,6 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
 
     private var bitmap: Bitmap? = null
     private var statusAdd: Boolean = false
-    lateinit var queue: RequestQueue
     lateinit var preferences: Preferences
 
 
@@ -49,7 +42,7 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
         preferences = Preferences(this)
 
 
-        if (preferences.getValue("inDashboard").equals("true")){
+        if (preferences.getValue("inDashboard").equals("true")) {
             startActivity(Intent(this, DashboardActivity::class.java))
             finishAffinity()
         }
@@ -58,7 +51,7 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
         initBtn()
 
         iv_add.setOnClickListener {
-            if (statusAdd){
+            if (statusAdd) {
                 statusAdd = false
                 btn_simpan_lanjutkan.visibility = View.INVISIBLE
                 iv_add.setImageResource(R.drawable.plus)
@@ -73,15 +66,13 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
     }
 
 
-
-    private fun initBtn(){
+    private fun initBtn() {
         btn_lanjutkan.setOnClickListener {
             startActivity(Intent(this, DashboardActivity::class.java))
             finishAffinity()
         }
 
         btn_simpan_lanjutkan.setOnClickListener {
-//            saveUserPhoto()
             saveUserPhoto2()
             startActivity(Intent(this, DashboardActivity::class.java))
             onSuccess("Upload photo success")
@@ -90,11 +81,10 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
     }
 
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == GALLERY_ADD_PROFILE && resultCode == Activity.RESULT_OK){
+        if (requestCode == GALLERY_ADD_PROFILE && resultCode == Activity.RESULT_OK) {
 
             statusAdd = true
 
@@ -110,30 +100,34 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
     }
 
 
-    private fun saveUserPhoto2(){
+    private fun saveUserPhoto2() {
         val token = preferences.getValue("token")
 
         RetrofitBuilder.api.savePhoto(bitmapToString(bitmap), "Bearer $token")
-            .enqueue(object : Callback<UserPhoto> {
+            .enqueue(object : Callback<UserPhotoResponse> {
 
-                override fun onFailure(call: Call<UserPhoto>, t: Throwable) {
-
+                override fun onFailure(call: Call<UserPhotoResponse>, t: Throwable) {
+                    onError("Upload Failed")
                 }
 
                 override fun onResponse(
-                    call: Call<UserPhoto>,
-                    response: retrofit2.Response<UserPhoto>
+                    call: Call<UserPhotoResponse>,
+                    response: retrofit2.Response<UserPhotoResponse>
                 ) {
                     try {
                         val success = response.body()?.success
                         val photo = response.body()?.photo
 
-                        if (success!!){
+                        if (success!!) {
                             preferences.setValue("photo", photo!!)
+                            onSuccess("Success")
+
+                        } else {
+                            onError(response.body()!!.message)
                         }
 
-                    } catch (e: JSONException){
-
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
                     }
                 }
 
@@ -142,7 +136,7 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
 
 
     private fun bitmapToString(bitmap: Bitmap?): String {
-        if (bitmap != null){
+        if (bitmap != null) {
             val byteArrayOutputStream = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
             val array: ByteArray = byteArrayOutputStream.toByteArray()

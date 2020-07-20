@@ -7,7 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import com.example.appkp.R
 import com.example.appkp.api.RetrofitBuilder
-import com.example.appkp.model.UserResponse
+import com.example.appkp.model.AuthResponse
 import com.example.appkp.ui.PhotoScreenActivity
 import com.example.appkp.ui.auth.presenter.RegisterPresenter
 import com.example.appkp.ui.auth.view.IResult
@@ -43,18 +43,19 @@ class RegisterScreenActivity : AppCompatActivity(), IResult {
 
             if (register) {
                 RetrofitBuilder.api.onRegister(email, name, password)
-                    .enqueue(object : Callback<UserResponse> {
+                    .enqueue(object : Callback<AuthResponse> {
 
-                        override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                            onError("Login Failed")
+                        override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+                            onError("Register Failed")
                         }
 
                         override fun onResponse(
-                            call: Call<UserResponse>,
-                            response: retrofit2.Response<UserResponse>
+                            call: Call<AuthResponse>,
+                            response: retrofit2.Response<AuthResponse>
                         ) {
                             try {
                                 val success = response.body()?.success
+
                                 if (success!!) {
                                     val name = response.body()?.user!!.name
                                     val token = response.body()?.token
@@ -75,6 +76,8 @@ class RegisterScreenActivity : AppCompatActivity(), IResult {
                                         )
                                         finishAffinity()
                                     }
+                                } else {
+                                    onError(response.body()!!.message)
                                 }
 
                             } catch (e: JSONException) {

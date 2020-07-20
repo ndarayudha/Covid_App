@@ -18,7 +18,7 @@ class LoginPresenter(
 
         when (loginCode) {
             0 -> {
-                loginView.onSuccess("You must enter your email")
+                loginView.onError("You must enter your email")
                 return false
             }
             1 -> {

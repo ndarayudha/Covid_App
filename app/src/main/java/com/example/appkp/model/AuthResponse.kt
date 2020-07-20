@@ -1,10 +1,11 @@
 package com.example.appkp.model
 
 
-import com.example.appkp.model.User
 import com.google.gson.annotations.SerializedName
 
-data class UserResponse(
+data class AuthResponse(
+    @SerializedName("message")
+    val message: String,
     @SerializedName("success")
     val success: Boolean,
     @SerializedName("token")
