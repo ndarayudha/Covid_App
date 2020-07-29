@@ -3,52 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.dashboard.fragment.ArticleFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="380dp"
         android:layout_height="200dp"
+        android:layout_marginHorizontal="15dp"
         android:layout_marginTop="15dp"
-        app:cardCornerRadius="15dp"
         app:cardBackgroundColor="@color/colorPrimary"
-        android:layout_marginHorizontal="15dp">
+        app:cardCornerRadius="15dp">
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/userimage"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/userimage" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginStart="110dp"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textStyle="bold"
-                android:textSize="20sp"
+                android:text="Nama User"
                 android:textColor="@color/colorWhite"
-                android:text="Nama User"/>
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:text="Deskrpsi artikel, deskripsi artikel, deskripsi artikel"
                 android:textColor="@color/colorWhite"
-                android:textSize="16sp"
-                android:text="Deskrpsi artikel, deskripsi artikel, deskripsi artikel"/>
+                android:textSize="16sp" />
 
 
         </LinearLayout>
-
 
 
     </androidx.cardview.widget.CardView>

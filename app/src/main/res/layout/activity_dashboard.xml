@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/news_nav_graph"/>
+            app:navGraph="@navigation/news_nav_graph" />
     </FrameLayout>
 
 
@@ -32,13 +32,13 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@drawable/background_bottom_navbar"
+        app:itemHorizontalTranslationEnabled="true"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@color/colorWhite"
+        app:labelVisibilityMode="selected"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/item_menu_navbar"
-        app:itemHorizontalTranslationEnabled="true"
-        app:labelVisibilityMode="selected"/>
+        app:menu="@menu/item_menu_navbar">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

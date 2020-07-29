@@ -30,6 +30,16 @@ class HomeFragment : Fragment() {
             setProgressWithAnimation(85f, 1000)
 
         }
+        progressBar2.apply {
+
+            setProgressWithAnimation(97f, 1000)
+
+        }
+        progressBar3.apply {
+
+            setProgressWithAnimation(1.7f, 1000)
+
+        }
     }
 }
 

@@ -7,10 +7,9 @@
                 android:centerColor="#00a5ff"
                 android:endColor="#00a5ff"/>
 
-
             <corners
                 android:topLeftRadius="0dp"
-                android:topRightRadius="0dp"/>
+                android:topRightRadius="00dp"/>
         </shape>
     </item>
 
