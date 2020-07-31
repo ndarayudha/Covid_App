@@ -4,51 +4,498 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorGrayLight"
     tools:context=".ui.dashboard.fragment.HomeFragment">
 
-    <!--    <com.google.android.material.card.MaterialCardView-->
-    <!--        android:id="@+id/materialCardView"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="200dp"-->
-    <!--        android:background="@drawable/backgroud_top_home"-->
-    <!--        app:cardElevation="10dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/home_CardView"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-
-        app:cardBackgroundColor="@color/colorPrimary"
-        app:cardElevation="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.cardview.widget.CardView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-
-        android:layout_marginTop="43dp"
-        android:layout_marginBottom="288dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_CardView">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.mikhaellopez.circularprogressbar.CircularProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="50dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            app:cpb_background_progressbar_color_start="@color/colorPrimary"
-            app:cpb_background_progressbar_color_end="@color/colorPrimaryDark"
-            android:layout_marginTop="50dp" />
 
-    </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/home_CardView"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:outlineAmbientShadowColor="@color/colorBlack"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginBottom="50dp"
+                        android:text="Covid Indonesia"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView15"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Positif"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/textView20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView16"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="Dirawat"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/textView17"
+                        app:layout_constraintEnd_toEndOf="@+id/textView16"
+                        app:layout_constraintStart_toEndOf="@+id/textView17" />
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:text="Sembuh"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/textView18"
+                        app:layout_constraintStart_toEndOf="@+id/textView18" />
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:text="Meninggal"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/textView19"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/textView19" />
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hasil"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/textView17"
+                        app:layout_constraintStart_toStartOf="@+id/textView17"
+                        app:layout_constraintTop_toBottomOf="@+id/textView17"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hasil"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/textView20"
+                        app:layout_constraintEnd_toEndOf="@+id/textView18"
+                        app:layout_constraintStart_toStartOf="@+id/textView18" />
+
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hasil"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/textView21"
+                        app:layout_constraintEnd_toEndOf="@+id/textView19"
+                        app:layout_constraintStart_toStartOf="@+id/textView19" />
+
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hasil"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/textView22"
+                        app:layout_constraintEnd_toEndOf="@+id/textView23"
+                        app:layout_constraintStart_toStartOf="@+id/textView23" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Pulse Oximetry Kit"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="300dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Naruto"
+                        android:textColor="#FFFFFf"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.313"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/profilImage_home"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profilImage_home"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/userimage"
+                        app:civ_border_color="@color/colorWhite"
+                        app:civ_border_width="2dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/textView15"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView"
+                android:layout_width="360dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="50dp"
+                    app:cardBackgroundColor="#388E3C" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="70dp"
+                    app:cardBackgroundColor="#C2185B" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="90dp"
+                    app:cardBackgroundColor="#D32F2F" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="220dp"
+                    android:layout_marginTop="47.5dp"
+                    android:text="Normal"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="220dp"
+                    android:layout_marginTop="67.5dp"
+                    android:text="Cepat"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="220dp"
+                    android:layout_marginTop="87.5dp"
+                    android:text="Lambat"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="20dp"
+                    android:text="bpmPR"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="87dp"
+                    android:layout_marginTop="50dp"
+                    android:text="93"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="15dp"
+                    app:cpb_background_progressbar_color="@color/colorGrayLight"
+                    app:cpb_background_progressbar_width="7dp"
+                    app:cpb_progress_max="100"
+                    app:cpb_progressbar_color="#388E3C"
+                    app:cpb_round_border="true" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView2"
+                android:layout_width="360dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/home_CardView">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="50dp"
+                    app:cardBackgroundColor="#388E3C" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="70dp"
+                    app:cardBackgroundColor="#FBC02D" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="90dp"
+                    app:cardBackgroundColor="#D32F2F" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="220dp"
+                    android:layout_marginTop="47.5dp"
+                    android:text="Normal"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="220dp"
+                    android:layout_marginTop="67.5dp"
+                    android:text="Kurang"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="220dp"
+                    android:layout_marginTop="87.5dp"
+                    android:text="Rendah"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="20dp"
+                    android:text="%SpO2"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="50dp"
+                    android:text="97%"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                    android:id="@+id/progressBar2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="15dp"
+                    app:cpb_background_progressbar_color="@color/colorGrayLight"
+                    app:cpb_background_progressbar_width="7dp"
+                    app:cpb_progress_max="100"
+                    app:cpb_progressbar_color="#388E3C"
+                    app:cpb_round_border="true">
+
+                </com.mikhaellopez.circularprogressbar.CircularProgressBar>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView3"
+                android:layout_width="360dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                app:layout_constraintVertical_bias="0.0">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="50dp"
+                    app:cardBackgroundColor="#388E3C" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="70dp"
+                    app:cardBackgroundColor="#C2185B" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="90dp"
+                    app:cardBackgroundColor="#D32F2F" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="220dp"
+                    android:layout_marginTop="47.5dp"
+                    android:text="Normal"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="220dp"
+                    android:layout_marginTop="67.5dp"
+                    android:text="Deras"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="220dp"
+                    android:layout_marginTop="87.5dp"
+                    android:text="Lambat"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="20dp"
+                    android:text="%PI"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="50dp"
+                    android:text="1.7%"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                    android:id="@+id/progressBar3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="15dp"
+                    app:cpb_background_progressbar_color="@color/colorGrayLight"
+                    app:cpb_background_progressbar_width="7dp"
+                    app:cpb_progress_max="10"
+                    app:cpb_progressbar_color="#388E3C"
+                    app:cpb_round_border="true" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="360dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView3">
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

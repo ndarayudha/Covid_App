@@ -1,13 +1,31 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorBlack</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-
     </style>
+
+
+    <style name="AppThemeCustom" parent="Theme.MaterialComponents.CompactMenu">
+        <!-- ....  -->
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@drawable/backgroud_top_home</item>
+    </style>
+
+
+    <style name="AppThemeCustomNavbar" parent="">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/colorGrayLight</item>
+    </style>
+
 
 
 

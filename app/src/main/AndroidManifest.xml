@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
 
-        <activity android:name=".ui.dashboard.DashboardActivity"/>
+
         <activity android:name=".ui.PhotoScreenActivity" />
         <activity
             android:name=".ui.auth.RegisterScreenActivity"
@@ -26,9 +26,11 @@
         <activity
             android:name=".ui.OnboardingActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".ui.SplashScreenActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"/>
+            <activity android:name=".ui.dashboard.DashboardActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
