@@ -17,12 +17,15 @@
 
 
         <activity android:name=".ui.PhotoScreenActivity" />
+
+        <activity android:name=".ui.dashboard.DashboardActivity"/>
+
         <activity
             android:name=".ui.auth.RegisterScreenActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.auth.LoginScreenActivity"
-            android:screenOrientation="portrait" />
+
+
+
         <activity
             android:name=".ui.OnboardingActivity"
             android:screenOrientation="portrait" />
@@ -30,7 +33,10 @@
         <activity
             android:name=".ui.SplashScreenActivity"
             android:screenOrientation="portrait"/>
-            <activity android:name=".ui.dashboard.DashboardActivity">
+
+        <activity
+            android:name=".ui.auth.LoginScreenActivity"
+            android:screenOrientation="portrait" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

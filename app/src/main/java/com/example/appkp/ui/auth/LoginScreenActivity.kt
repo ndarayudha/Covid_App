@@ -1,6 +1,7 @@
 package com.example.appkp.ui.auth
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import com.example.appkp.ui.PhotoScreenActivity
 import com.example.appkp.ui.auth.presenter.LoginPresenter
 import com.example.appkp.ui.auth.view.IResult
 import com.example.appkp.util.Preferences
+import com.google.android.material.card.MaterialCardView
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.edt_name
@@ -32,6 +34,8 @@ class LoginScreenActivity : AppCompatActivity(), IResult {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+
 
 
         loginPresenter = LoginPresenter(this@LoginScreenActivity)
@@ -110,5 +114,11 @@ class LoginScreenActivity : AppCompatActivity(), IResult {
         Toasty.error(this, message, Toasty.LENGTH_SHORT).show()
     }
 
+
+
 }
+
+
+
+
 

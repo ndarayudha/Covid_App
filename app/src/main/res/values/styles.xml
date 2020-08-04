@@ -2,22 +2,36 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorWhite</item>
         <item name="colorPrimaryDark">@color/colorBlack</item>
         <item name="colorAccent">@color/colorAccent</item>
 
     </style>
 
 
-    <style name="AppThemeCustom" parent="Theme.MaterialComponents.CompactMenu">
-        <!-- ....  -->
+
+<!--    <style name="MyCardView" parent="@style/Widget.MaterialComponents.CardView">-->
+<!--        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut</item>-->
+<!--    </style>-->
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut.Login" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">50dp</item>
+        <item name="cornerSizeTopLeft">50dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
-    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:background">@drawable/backgroud_top_home</item>
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut.Home" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">15dp</item>
+        <item name="cornerSizeTopLeft">15dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
     </style>
+
+
 
 
     <style name="AppThemeCustomNavbar" parent="">
