@@ -36,6 +36,9 @@ class SettingFragment : Fragment() {
                 commit()
             }
         }
+
+
+        
     }
 
 }

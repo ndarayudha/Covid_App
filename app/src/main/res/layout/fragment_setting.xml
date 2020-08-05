@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="10dp"
-        android:text="Akun info"
+        android:text="Info pengguna"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/cardView_edt_profil"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,15 +40,13 @@
         android:id="@+id/cardView_edt_profil"
         android:layout_width="0dp"
         android:layout_height="50dp"
-
         android:layout_marginStart="25dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/shadow_card"
         app:cardBackgroundColor="@color/colorWhite"
-
         app:cardCornerRadius="5dp"
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +94,7 @@
         android:background="@drawable/shadow_card"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="5dp"
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -139,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="10dp"
-        android:text="More"
+        android:text="Lainnya"
         android:textColor="@color/colorBlack"
         app:layout_constraintBottom_toTopOf="@+id/cardView_Logout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,7 +154,7 @@
         android:background="@drawable/shadow_card"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="5dp"
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -194,5 +192,56 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_Tentang"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="25dp"
+        app:cardBackgroundColor="@color/colorWhite"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_Logout"
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_info_app" />
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="30dp"
+                android:text="Tentang Aplikasi"
+                android:textColor="@color/colorBlack" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+
+                android:layout_gravity="center"
+                android:layout_marginLeft="120dp"
+                android:src="@drawable/arrow_icon_style" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
