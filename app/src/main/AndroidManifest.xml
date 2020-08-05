@@ -18,7 +18,7 @@
 
         <activity android:name=".ui.PhotoScreenActivity" />
 
-        <activity android:name=".ui.dashboard.DashboardActivity"/>
+
 
         <activity
             android:name=".ui.auth.RegisterScreenActivity"
@@ -36,7 +36,9 @@
 
         <activity
             android:name=".ui.auth.LoginScreenActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait" />
+
+            <activity android:name=".ui.dashboard.DashboardActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
