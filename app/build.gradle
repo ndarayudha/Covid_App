@@ -52,6 +52,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
 
+    // maps
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
 
     // Chart Graphic

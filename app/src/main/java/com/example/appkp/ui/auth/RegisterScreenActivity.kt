@@ -18,7 +18,9 @@ import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
 
+
 class RegisterScreenActivity : AppCompatActivity(), IResult {
+
 
     lateinit var registerPresenter: RegisterPresenter
     lateinit var preference: Preferences

@@ -7,6 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.appkp.R
 
-class ArticleFragment : Fragment(R.layout.fragment_article) {
+class ArticleFragment : Fragment() {
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_article, container, false)
+    }
 }

@@ -37,7 +37,6 @@
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@color/colorWhite"
         app:labelVisibilityMode="selected"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/item_menu_navbar">
 

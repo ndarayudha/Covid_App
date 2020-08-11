@@ -10,4 +10,5 @@ class Constant {
         const val PORT = "8080"
         const val SAVE_USER_PHOTO = "$HOME/save_user_photo"
     }
+
 }

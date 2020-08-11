@@ -25,8 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
 
         lifecycleScope.launch {
-            delay(5000L)
-
+            delay(500L)
 
             when {
                 preference.getValue("isLoggedIn").equals("true") -> {

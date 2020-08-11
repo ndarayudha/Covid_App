@@ -2,6 +2,7 @@ package com.example.appkp.ui
 
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,7 @@ import com.example.appkp.api.RetrofitBuilder
 import com.example.appkp.model.UserPhotoResponse
 import com.example.appkp.ui.auth.view.IResult
 import com.example.appkp.ui.dashboard.DashboardActivity
+import com.example.appkp.util.PermissionManager
 import com.example.appkp.util.Preferences
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_photo_screen.*
@@ -20,6 +22,7 @@ import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
 import java.io.ByteArrayOutputStream
+import java.util.jar.Manifest
 
 class PhotoScreenActivity : AppCompatActivity(), IResult {
 
@@ -31,6 +34,7 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
 
     companion object {
         const val GALLERY_ADD_PROFILE = 1
+        const val STORAGE_REQUEST_CODE = 100
     }
 
 
@@ -50,16 +54,33 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
 
         initBtn()
 
+
         iv_add.setOnClickListener {
-            if (statusAdd) {
-                statusAdd = false
-                btn_simpan_lanjutkan.visibility = View.INVISIBLE
-                iv_add.setImageResource(R.drawable.plus)
-                iv_profile.setImageResource(R.drawable.userimage)
-            } else {
-                Intent(Intent.ACTION_PICK).also {
-                    it.type = "image/*"
-                    startActivityForResult(it, GALLERY_ADD_PROFILE)
+
+            val isGranted = PermissionManager.isGranted(
+                this,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+
+            when {
+                statusAdd -> {
+                    statusAdd = false
+                    btn_simpan_lanjutkan.visibility = View.INVISIBLE
+                    iv_add.setImageResource(R.drawable.plus)
+                    iv_profile.setImageResource(R.drawable.userimage)
+                }
+                isGranted -> {
+                    Intent(Intent.ACTION_PICK).also {
+                        it.type = "image/*"
+                        startActivityForResult(it, GALLERY_ADD_PROFILE)
+                    }
+                }
+                else -> {
+                    PermissionManager.check(
+                        this,
+                        android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                        STORAGE_REQUEST_CODE
+                    )
                 }
             }
         }
@@ -146,6 +167,26 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
         }
 
         return ""
+    }
+
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == STORAGE_REQUEST_CODE && grantResults.isNotEmpty()) {
+            for (i in grantResults.indices) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                    Intent(Intent.ACTION_PICK).also {
+                        it.type = "image/*"
+                        startActivityForResult(it, GALLERY_ADD_PROFILE)
+                    }
+                }
+            }
+        }
     }
 
 
