@@ -1,18 +1,29 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorWhite</item>
-        <item name="colorPrimaryDark">@color/colorBlack</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <!--        <item name="colorPrimary">@color/colorWhite</item>-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--        <item name="colorAccent">@color/colorAccent</item>-->
+
+
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
 
     </style>
 
 
+    <!-- ======================== SETUP MATERIAL OUTLINE BOX EDIT TEXT ======================= -->
 
-<!--    <style name="MyCardView" parent="@style/Widget.MaterialComponents.CardView">-->
-<!--        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut</item>-->
-<!--    </style>-->
+    <style name="Widget.Shrine.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <item name="hintTextColor">@color/colorGrayLight</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="boxStrokeColor">@color/textInputOutlineColor</item>
+    </style>
+
+
+    <!-- ======================== SETUP MATERIAL CARD CORNER ======================= -->
 
     <style name="ShapeAppearanceOverlay.MaterialCardView.Cut.Login" parent="">
         <item name="cornerFamily">rounded</item>
@@ -22,7 +33,6 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
-
     <style name="ShapeAppearanceOverlay.MaterialCardView.Cut.Home" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopRight">15dp</item>
@@ -31,16 +41,26 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut.Profil" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">15dp</item>
+        <item name="cornerSizeBottomLeft">15dp</item>
+    </style>
 
-
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut.Profil_Bottom" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">15dp</item>
+        <item name="cornerSizeTopLeft">15dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
 
     <style name="AppThemeCustomNavbar" parent="">
-
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@color/colorGrayLight</item>
     </style>
-
-
 
 
 </resources>

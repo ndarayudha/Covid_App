@@ -25,7 +25,6 @@ class SettingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         cardView_edt_profil.setOnClickListener {
             val profilFragment = ProfilFragment()
             val fragment = fragmentManager
@@ -38,7 +37,7 @@ class SettingFragment : Fragment() {
         }
 
 
-        
+
     }
 
 }
