@@ -33,11 +33,9 @@ class SettingFragment : Fragment() {
                 replace(R.id.nav_host_fragment_container, profilFragment, ProfilFragment::class.java.simpleName)
                 addToBackStack(null)
                 commit()
+
             }
         }
-
-
-
     }
 
 }
