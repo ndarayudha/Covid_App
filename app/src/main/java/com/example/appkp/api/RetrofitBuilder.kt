@@ -1,6 +1,6 @@
 package com.example.appkp.api
 
-import com.example.appkp.util.Constant.Companion.BASE_URL
+import com.example.appkp.util.Constant
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,7 +21,7 @@ object RetrofitBuilder {
 
         // create retrofit
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(Constant.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

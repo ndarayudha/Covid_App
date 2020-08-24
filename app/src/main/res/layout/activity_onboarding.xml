@@ -33,7 +33,7 @@
             android:id="@+id/btnLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:background="@drawable/transaparent_blue_onboarding_button"
             android:text="@string/onboarding_btn_text_left"
             android:textColor="@color/colorPrimary" />
 
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:background="@android:color/transparent"
+            android:background="@drawable/transaparent_blue_onboarding_button"
             android:text="@string/onboarding_btn_text_right"
             android:textColor="@color/colorPrimary" />
 

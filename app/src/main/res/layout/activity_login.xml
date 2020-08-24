@@ -7,31 +7,58 @@
     android:orientation="vertical"
     tools:context=".ui.auth.LoginScreenActivity">
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="231dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/textHead_Login"
+        android:textColor="@color/colorDarkSecondary"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textHead_Login2"
+        android:textColor="@color/colorDarkSecondary"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/pulse_logo"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/login_image"
+        app:layout_constraintBottom_toTopOf="@+id/cardView_BackgroundLoginBottom"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView_BackgroundLoginBottom"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        app:cardElevation="5dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="240dp"
         app:cardBackgroundColor="@color/colorPrimary"
+        app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.Cut.Login">
+        app:shapeAppearanceOverlay="@style/Corner.Login">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -40,84 +67,187 @@
             tools:layout_editor_absoluteY="12dp">
 
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="91dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="65dp"
-                android:layout_marginTop="32dp"
-                android:text="@string/et_email"
-                android:textColor="@color/colorWhite"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-            <EditText
-                android:id="@+id/edt_name"
-                android:layout_width="251dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
-                android:layout_marginEnd="72dp"
-                android:backgroundTint="@color/colorWhite"
-                android:hint="Masukkan email"
-                android:inputType="textEmailAddress"
-                android:textColorHint="@color/colorGrayLight"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:hint="Email"
+                android:textColorHint="@color/colorWhite"
+                app:boxStrokeColor="@color/colorWhite"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorWhite"
+                app:errorIconTint="@color/colorRed"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="@color/colorWhite"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:placeholderTextColor="@color/colorWhite"
+                app:startIconDrawable="@drawable/ic_email_24px"
+                app:startIconTint="@color/colorWhite">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_email"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="true"
+                    android:inputType="textEmailAddress"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/colorWhite"
+                    android:allowUndo="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.278"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.346" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="111dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="65dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="212dp"
-                android:text="@string/et_password"
-                android:textColor="@color/colorWhite"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edt_name" />
-
-            <EditText
-                android:id="@+id/edt_password"
-                android:layout_width="251dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
-                android:layout_marginEnd="72dp"
-                android:backgroundTint="@color/colorWhite"
-                android:hint="Masukkan password"
-                android:inputType="textPassword"
-                android:textColorHint="@color/colorGrayLight"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:hint="Password"
+                android:textColorHint="@color/colorWhite"
+                app:boxStrokeColor="@color/colorWhite"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/colorWhite"
+                app:errorIconTint="@color/colorRed"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="@color/colorWhite"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+                app:placeholderTextColor="@color/colorWhite"
+                app:startIconDrawable="@drawable/ic_lock_24px"
+                app:startIconTint="@color/colorWhite">
 
 
-            <Button
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_password"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="true"
+                    android:inputType="textPassword"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/textView2"-->
+            <!--                android:layout_width="91dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="65dp"-->
+            <!--                android:layout_marginTop="32dp"-->
+            <!--                android:text="@string/et_email"-->
+            <!--                android:textColor="@color/colorWhite"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.0"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/textView" />-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/edt_name"-->
+            <!--                android:layout_width="251dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="80dp"-->
+            <!--                android:layout_marginEnd="72dp"-->
+            <!--                android:backgroundTint="@color/colorWhite"-->
+            <!--                android:hint="Masukkan email"-->
+            <!--                android:inputType="textEmailAddress"-->
+            <!--                android:textColorHint="@color/colorGrayLight"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/textView2" />-->
+
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/textView4"-->
+            <!--                android:layout_width="111dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="65dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:layout_marginEnd="212dp"-->
+            <!--                android:text="@string/et_password"-->
+            <!--                android:textColor="@color/colorWhite"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.0"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/edt_name" />-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/edt_password"-->
+            <!--                android:layout_width="251dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="80dp"-->
+            <!--                android:layout_marginEnd="72dp"-->
+            <!--                android:backgroundTint="@color/colorWhite"-->
+            <!--                android:hint="Masukkan password"-->
+            <!--                android:inputType="textPassword"-->
+            <!--                android:textColorHint="@color/colorGrayLight"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
+
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/btn_login"-->
+            <!--                    android:layout_width="160dp"-->
+            <!--                    android:layout_height="36dp"-->
+            <!--                    android:layout_gravity="center"-->
+            <!--                    android:layout_marginTop="28dp"-->
+            <!--                    android:background="@drawable/btn_style_white"-->
+            <!--                    android:text="Login"-->
+            <!--                    android:textAlignment="center"-->
+            <!--                    android:textColor="@color/colorBlack"-->
+            <!--                    app:shapeAppearance="@color/colorPrimaryLightButton"-->
+            <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                    app:layout_constraintHorizontal_bias="0.497"-->
+            <!--                    app:layout_constraintStart_toStartOf="parent"-->
+            <!--                    app:layout_constraintTop_toBottomOf="@+id/edt_password" />-->
+
+            <androidx.cardview.widget.CardView
                 android:id="@+id/btn_login"
                 android:layout_width="160dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/frame_style_white"
+                android:layout_height="36dp"
+                android:layout_marginTop="40dp"
                 android:text="Login"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:elegantTextHeight="true"
-                android:textColor="@color/colorBlack"
+                app:cardCornerRadius="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edt_password"/>
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Login"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorBlack" />
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="90dp"
+                android:layout_marginStart="80dp"
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
                 android:text="Belum memiliki akun?"
@@ -127,13 +257,14 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_daftar"
-                android:layout_width="46dp"
+            <Button
+                android:id="@+id/btn_daftar"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="Daftar"
-                android:textColor="#FFFF00"
+                android:background="@drawable/btn_transparent_login"
+                android:text="@string/tx_button_daftar"
+                android:textAllCaps="false"
+                android:textColor="@color/colorYellow"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/textView10"
                 app:layout_constraintStart_toEndOf="@+id/textView10"
@@ -153,7 +284,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </com.google.android.material.card.MaterialCardView>
 

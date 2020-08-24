@@ -6,6 +6,14 @@
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorGrayLight">#eeeeee</color>
+    <color name="colorYellow">#FFF000</color>
+    <color name="colorDarkSecondary">#2F2E41</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorRed">#FF0000</color>
+
+
+    <color name="colorPrimaryBlueButton">#00a5ff</color>
+    <color name="colorPrimaryLightButton">#FFFFFF</color>
 
 
     <color name="textColorPrimary">#442C2E</color>

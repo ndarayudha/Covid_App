@@ -6,19 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".ui.PhotoScreenActivity">
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="149dp"
+        android:layout_height="142dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/uploadphoto_picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_profile"
         android:layout_width="0dp"
         android:layout_height="140dp"
-        android:layout_marginTop="30dp"
         android:layout_marginBottom="40dp"
         android:src="@drawable/userimage"
-        app:civ_border_color="@color/colorPrimaryDark"
+        app:civ_border_color="@color/colorPrimary"
         app:civ_border_width="3dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_simpan_lanjutkan"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_UploadFoto" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_UploadFoto"
+        app:layout_constraintVertical_bias="0.657" />
 
     <ImageView
         android:id="@+id/iv_add"
@@ -34,52 +44,61 @@
 
     <TextView
         android:id="@+id/tv_UploadFoto"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="48dp"
         android:text="Unggah Foto"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
+        android:textColor="@color/colorDarkSecondary"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/iv_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anda !"
+        android:textColor="@color/colorDarkSecondary"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tv_UploadFoto"
+        app:layout_constraintTop_toBottomOf="@+id/tv_UploadFoto" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_lanjutkan"
         android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="82dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/btn_style"
-        android:gravity="center"
-        android:text="Upload nanti"
+        android:text="Unggah Nanti"
+        android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearance="@color/colorPrimaryBlueButton" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_simpan_lanjutkan"
         android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginEnd="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="12dp"
-        android:background="@drawable/frame_style_white"
-        android:gravity="center"
+        android:background="@drawable/btn_style"
         android:text="Simpan dan Lanjutkan"
-        android:textColor="@color/colorPrimary"
-        android:visibility="invisible"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/btn_lanjutkan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearance="@color/colorPrimaryLightButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

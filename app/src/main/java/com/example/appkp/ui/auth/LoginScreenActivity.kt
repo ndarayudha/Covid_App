@@ -16,7 +16,7 @@ import com.example.appkp.util.Preferences
 import com.google.android.material.card.MaterialCardView
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.edt_name
+import kotlinx.android.synthetic.main.activity_login.edt_email
 import kotlinx.android.synthetic.main.activity_login.edt_password
 import org.json.JSONException
 import retrofit2.Call
@@ -45,7 +45,7 @@ class LoginScreenActivity : AppCompatActivity(), IResult {
 
 
         btn_login.setOnClickListener {
-            val email = edt_name.text.toString()
+            val email = edt_email.text.toString()
             val password = edt_password.text.toString()
 
             val login = loginPresenter.onLogin(email, password)
@@ -99,7 +99,7 @@ class LoginScreenActivity : AppCompatActivity(), IResult {
             }
 
 
-            tv_daftar.setOnClickListener {
+            btn_daftar.setOnClickListener {
                 startActivity(Intent(this, RegisterScreenActivity::class.java))
             }
         }
