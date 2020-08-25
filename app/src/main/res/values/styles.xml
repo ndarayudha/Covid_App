@@ -1,31 +1,38 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <!--        <item name="colorPrimary">@color/colorWhite</item>-->
+
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <!--        <item name="colorAccent">@color/colorAccent</item>-->
+        <item name="android:autofilledHighlight" tools:targetApi="o">@color/colorTransparent</item>
+<!--        <item name="color">@color/colorPrimaryLightButton</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
 
 
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+    </style>
 
+
+
+
+    <style name="AppThemeCompat" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:color">@color/colorPrimaryLightButton</item>
     </style>
 
 
     <!-- ======================== SETUP MATERIAL OUTLINE BOX EDIT TEXT ======================= -->
 
     <style name="Widget.Shrine.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
         <item name="hintTextColor">@color/colorGrayLight</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="boxStrokeColor">@color/textInputOutlineColor</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="boxStrokeColor">@color/colorWhite</item>
     </style>
 
 
     <!-- ======================== SETUP MATERIAL CARD CORNER ======================= -->
 
-    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut.Login" parent="">
+    <style name="Corner.Login" parent="">
+        <item name="android:color">@color/colorPrimaryLightButton</item>
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopRight">40dp</item>
         <item name="cornerSizeTopLeft">40dp</item>
@@ -33,7 +40,16 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
-    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut.Home" parent="">
+    <style name="Corner.Register" parent="">
+        <item name="android:color">@color/colorPrimaryLightButton</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">40dp</item>
+        <item name="cornerSizeTopLeft">40dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="Corner.Home" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopRight">15dp</item>
         <item name="cornerSizeTopLeft">15dp</item>
@@ -41,7 +57,7 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
-    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut.Profil" parent="">
+    <style name="Corner.Profil" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerSizeTopLeft">0dp</item>
@@ -49,7 +65,7 @@
         <item name="cornerSizeBottomLeft">15dp</item>
     </style>
 
-    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut.Profil_Bottom" parent="">
+    <style name="Corner.Profil_Bottom" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopRight">15dp</item>
         <item name="cornerSizeTopLeft">15dp</item>
@@ -57,10 +73,17 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
+
+<!--    ======================== SETUP BUTTON STYLE =========================    -->
+
+
+
     <style name="AppThemeCustomNavbar" parent="">
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@color/colorGrayLight</item>
     </style>
+
+
 
 
 </resources>

@@ -37,9 +37,9 @@ class RegisterScreenActivity : AppCompatActivity(), IResult {
 
 
         btn_register.setOnClickListener {
+            val name = edt_name.text.toString()
             val email = edt_email.text.toString()
             val password = edt_password.text.toString()
-            val name = edt_name.text.toString()
 
             val register = registerPresenter.onRegister(email, password, name)
 

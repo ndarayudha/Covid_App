@@ -10,11 +10,16 @@
     <string name="et_email">Email</string>
     <string name="et_password">Password</string>
     <string name="tv_judul_login">Login</string>
+    <string name="tx_button_daftar">Daftar</string>
+    <string name="textHead_Register">Buat Akun Anda !</string>
+    <string name="textHead_Login">Masukkan Akun</string>
+    <string name="textHead_Login2">Anda !</string>
+
 
 
     <string-array name="onboardingTitle">
         <item>Rencanakan Kesehatan</item>
-        <item>Waspadai Sekitar Anda</item>
+        <item>Artikel mengenai covid-19</item>
         <item>Pengguna Sekitar</item>
         <item>Cek Kadar O2</item>
     </string-array>
@@ -22,7 +27,7 @@
 
     <string-array name="onboardingDescription">
         <item>Cek secara rutin kesehatan anda di\nlayanan kesehatan terdekat</item>
-        <item>Gunakan masker saat beraktifitas\ndi dalam maupun diluar ruangan</item>
+        <item>Dapatkan artikel terbaru seputar covid-19</item>
         <item>Ketahui pengguna di sekitar anda</item>
         <item>Pantau kadar O2 terlarut dalam darah</item>
     </string-array>
@@ -46,6 +51,17 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+<!-- Setup Maps Mode -->
+    <string name="normal_map">Normal Map</string>
+    <string name="hybrid_map">Hybrid Map</string>
+    <string name="satellite_map">Satellite Map</string>
+    <string name="terrain_map">Terrain Map</string>
+    <string name="lat_long_snippet">Lat: %1$.5f, Long: %2$.5f</string>
+    <string name="dropped_pin">Dropped Pin</string>
+    <string name="poi">poi</string>
 
 
 </resources>
