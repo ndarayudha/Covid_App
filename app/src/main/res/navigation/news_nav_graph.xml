@@ -23,5 +23,22 @@
         android:id="@+id/settingFragment"
         android:name="com.example.appkp.ui.dashboard.fragment.SettingFragment"
         android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_loginScreenActivity"
+            app:destination="@id/loginScreenActivity" />
+        <action
+            android:id="@+id/action_settingFragment_to_profilFragment"
+            app:destination="@id/profilFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/loginScreenActivity"
+        android:name="com.example.appkp.ui.auth.LoginScreenActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/profilFragment"
+        android:name="com.example.appkp.ui.dashboard.fragment.profil.ProfilFragment"
+        android:label="fragment_profil"
+        tools:layout="@layout/fragment_profil" />
 </navigation>

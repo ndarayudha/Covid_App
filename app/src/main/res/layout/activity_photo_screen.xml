@@ -95,6 +95,7 @@
         android:text="Simpan dan Lanjutkan"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/btn_lanjutkan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

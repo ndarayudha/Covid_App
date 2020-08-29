@@ -11,9 +11,10 @@ import android.util.Base64
 import android.view.View
 import com.example.appkp.R
 import com.example.appkp.api.RetrofitBuilder
-import com.example.appkp.model.UserPhotoResponse
+import com.example.appkp.model.auth.UserPhotoResponse
 import com.example.appkp.ui.auth.view.IResult
 import com.example.appkp.ui.dashboard.DashboardActivity
+import com.example.appkp.util.Constant
 import com.example.appkp.util.PermissionManager
 import com.example.appkp.util.Preferences
 import es.dmoral.toasty.Toasty
@@ -22,7 +23,6 @@ import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
 import java.io.ByteArrayOutputStream
-import java.util.jar.Manifest
 
 class PhotoScreenActivity : AppCompatActivity(), IResult {
 
@@ -124,7 +124,7 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
     private fun saveUserPhoto2() {
         val token = preferences.getValue("token")
 
-        RetrofitBuilder.api.savePhoto(bitmapToString(bitmap), "Bearer $token")
+        RetrofitBuilder(Constant.BASE_URL).api.savePhoto(bitmapToString(bitmap), "Bearer $token")
             .enqueue(object : Callback<UserPhotoResponse> {
 
                 override fun onFailure(call: Call<UserPhotoResponse>, t: Throwable) {

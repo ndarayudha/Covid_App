@@ -10,14 +10,14 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_goneMarginBottom="10dp"
         android:paddingBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_goneMarginBottom="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -174,20 +174,16 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="300dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="8dp"
                         android:text="Naruto"
                         android:textColor="#FFFFFf"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.313"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profilImage_home"
-                        app:layout_constraintVertical_bias="0.0" />
+                        app:layout_constraintEnd_toEndOf="@+id/profilImage_home"
+                        app:layout_constraintStart_toStartOf="@+id/profilImage_home"
+                        app:layout_constraintTop_toBottomOf="@+id/profilImage_home" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profilImage_home"
@@ -288,6 +284,7 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/lineChart_BPM"
                 android:layout_width="360dp"
@@ -297,16 +294,63 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/lineChart_BPM">
+
+                <Button
+                    android:id="@+id/btn_bpm_insert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:text="insert" />
+
+                <Button
+                    android:id="@+id/btn_bpm_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="delete" />
+
+            </LinearLayout>
+
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/lineChart_PI"
                 android:layout_width="360dp"
                 android:layout_height="360dp"
-                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lineChart_BPM" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/lineChart_PI">
+
+                <Button
+                    android:id="@+id/btn_pi_insert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:text="insert" />
+
+                <Button
+                    android:id="@+id/btn_pi_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="delete" />
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.core.widget.NestedScrollView>
 
