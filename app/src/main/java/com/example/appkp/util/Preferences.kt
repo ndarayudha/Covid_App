@@ -22,4 +22,9 @@ class Preferences(context: Context){
     fun getValue(key: String) : String? {
         return sharePref.getString(key, "")
     }
+
+
+    fun clear() {
+        sharePref.edit().clear().apply()
+    }
 }

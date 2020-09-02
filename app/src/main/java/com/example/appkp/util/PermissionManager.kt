@@ -1,6 +1,7 @@
 package com.example.appkp.util
 
 import android.app.Activity
+import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 
@@ -10,6 +11,7 @@ object PermissionManager {
             ActivityCompat.requestPermissions(activity, arrayOf(permission), requestCode)
         }
     }
+
 
     fun isGranted(activity: Activity, permission: String) : Boolean {
         return ActivityCompat.checkSelfPermission(activity, permission) == PackageManager.PERMISSION_GRANTED

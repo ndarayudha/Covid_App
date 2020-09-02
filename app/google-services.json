@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "989526988397",
+    "firebase_url": "https://pulse-oxymetri-8de5c.firebaseio.com",
+    "project_id": "pulse-oxymetri-8de5c",
+    "storage_bucket": "pulse-oxymetri-8de5c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989526988397:android:8c47e58baafe594ddd5164",
+        "android_client_info": {
+          "package_name": "com.example.appkp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989526988397-jcg6o497snf03ou49t78q9cplin3dk0g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appkp",
+            "certificate_hash": "49420072c94758c9ecd238043a05bc9a41f92822"
+          }
+        },
+        {
+          "client_id": "989526988397-rhtdmj47o5uq96rmelhu42ugtj5idgbi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY1WfMJKUdVDGBsV7pLJWnfyS_Pn9Ggqo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989526988397-rhtdmj47o5uq96rmelhu42ugtj5idgbi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

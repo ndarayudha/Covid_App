@@ -7,10 +7,11 @@ import android.util.Log
 import android.widget.Toast
 import com.example.appkp.R
 import com.example.appkp.api.RetrofitBuilder
-import com.example.appkp.model.AuthResponse
+import com.example.appkp.model.auth.AuthResponse
 import com.example.appkp.ui.PhotoScreenActivity
 import com.example.appkp.ui.auth.presenter.RegisterPresenter
 import com.example.appkp.ui.auth.view.IResult
+import com.example.appkp.util.Constant
 import com.example.appkp.util.Preferences
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_register.*
@@ -44,7 +45,7 @@ class RegisterScreenActivity : AppCompatActivity(), IResult {
             val register = registerPresenter.onRegister(email, password, name)
 
             if (register) {
-                RetrofitBuilder.api.onRegister(email, name, password)
+                RetrofitBuilder(Constant.BASE_URL).api.onRegister(email, name, password)
                     .enqueue(object : Callback<AuthResponse> {
 
                         override fun onFailure(call: Call<AuthResponse>, t: Throwable) {

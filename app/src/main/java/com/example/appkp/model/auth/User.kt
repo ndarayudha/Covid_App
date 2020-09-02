@@ -1,4 +1,4 @@
-package com.example.appkp.model
+package com.example.appkp.model.auth
 
 
 import com.google.gson.annotations.SerializedName
