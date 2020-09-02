@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -46,6 +47,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
 
 
+    implementation 'com.google.firebase:firebase-database:16.0.4'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -98,7 +100,7 @@ dependencies {
 
     //Library Toast yang ciamik
     implementation 'com.github.GrenderG:Toasty:1.4.2'
-    
+
     // Volley
     implementation 'com.android.volley:volley:1.1.1'
 

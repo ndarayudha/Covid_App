@@ -16,7 +16,6 @@
     <string name="textHead_Login2">Anda !</string>
 
 
-
     <string-array name="onboardingTitle">
         <item>Rencanakan Kesehatan</item>
         <item>Artikel mengenai covid-19</item>
@@ -53,8 +52,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-
-<!-- Setup Maps Mode -->
+    <!-- Setup Maps Mode -->
     <string name="normal_map">Normal Map</string>
     <string name="hybrid_map">Hybrid Map</string>
     <string name="satellite_map">Satellite Map</string>
@@ -62,6 +60,9 @@
     <string name="lat_long_snippet">Lat: %1$.5f, Long: %2$.5f</string>
     <string name="dropped_pin">Dropped Pin</string>
     <string name="poi">poi</string>
+    <string name="btn_batalkan">Batalkan</string>
+    <string name="btn_logout">Logout</string>
+    <string name="apakah_anda_yakin">Apakah anda yakin?</string>
 
 
 </resources>

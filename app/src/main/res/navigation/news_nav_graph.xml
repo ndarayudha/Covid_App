@@ -25,11 +25,11 @@
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" >
         <action
-            android:id="@+id/action_settingFragment_to_loginScreenActivity"
-            app:destination="@id/loginScreenActivity" />
-        <action
             android:id="@+id/action_settingFragment_to_profilFragment"
             app:destination="@id/profilFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_loginScreenActivity"
+            app:destination="@id/loginScreenActivity" />
     </fragment>
     <activity
         android:id="@+id/loginScreenActivity"

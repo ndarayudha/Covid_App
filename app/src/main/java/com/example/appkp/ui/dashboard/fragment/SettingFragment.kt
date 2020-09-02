@@ -14,6 +14,7 @@ import com.example.appkp.api.RetrofitBuilder
 import com.example.appkp.model.auth.LogoutResponse
 import com.example.appkp.ui.auth.LoginScreenActivity
 import com.example.appkp.ui.dashboard.DashboardActivity
+import com.example.appkp.ui.dashboard.fragment.dialog.OptionLogoutDIalog
 import com.example.appkp.ui.dashboard.fragment.profil.ProfilFragment
 import com.example.appkp.util.Constant
 import com.example.appkp.util.Preferences
@@ -45,40 +46,17 @@ class SettingFragment : Fragment() {
         preference = Preferences(view.context)
 
 
-
         cardView_edt_profil.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_settingFragment_to_profilFragment)
         }
 
         cardView_Logout.setOnClickListener {
-            logout()
-            Navigation.findNavController(view).navigate(R.id.action_settingFragment_to_loginScreenActivity)
-            preference.clear()
-            activity?.finishAffinity()
+            val optionLogoutDialog = OptionLogoutDIalog()
+            val mFragmentManager = parentFragmentManager
+            optionLogoutDialog.show(mFragmentManager, OptionLogoutDIalog::class.java.simpleName)
         }
     }
 
-
-    private fun logout() {
-        val token = preference.getValue("token")
-
-        RetrofitBuilder(Constant.BASE_URL).api.logout("Bearer $token")
-
-            .enqueue(object : Callback<LogoutResponse> {
-
-            override fun onFailure(call: Call<LogoutResponse>, t: Throwable) {
-                Log.d("LogoutFailed", t.message)
-            }
-
-            override fun onResponse(
-                call: Call<LogoutResponse>,
-                response: Response<LogoutResponse>
-            ) {
-                Log.d("LogoutSuccess", response.body()!!.message)
-            }
-
-        })
-    }
 }
 
 
