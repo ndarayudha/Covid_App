@@ -21,5 +21,7 @@
     <color name="loginPageBackgroundColor">#FFFFFF</color>
     <color name="productGridBackgroundColor">#FFFBFA</color>
     <color name="textInputOutlineColor">#FBB8AC</color>
+    <color name="indikator_spo2_kurang">#FBC02D</color>
+    <color name="indikator_spo2_cukup">#388E3C</color>
 
 </resources>

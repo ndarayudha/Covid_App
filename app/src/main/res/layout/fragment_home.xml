@@ -104,14 +104,14 @@
                     android:layout_height="10dp"
                     android:layout_marginStart="200dp"
                     android:layout_marginTop="50dp"
-                    app:cardBackgroundColor="#388E3C" />
+                    app:cardBackgroundColor="@color/indikator_spo2_cukup" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:layout_marginStart="200dp"
                     android:layout_marginTop="70dp"
-                    app:cardBackgroundColor="#FBC02D" />
+                    app:cardBackgroundColor="@color/indikator_spo2_kurang" />
 
 
                 <TextView
@@ -160,7 +160,7 @@
                     android:layout_marginTop="15dp"
                     app:cpb_background_progressbar_color="@color/colorGrayLight"
                     app:cpb_background_progressbar_width="7dp"
-                    app:cpb_progress_max="0"
+                    app:cpb_progress_max="100"
                     app:cpb_progressbar_color="#388E3C"
                     app:cpb_round_border="true">
 
