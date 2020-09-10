@@ -39,12 +39,6 @@ class HomeFragment : Fragment() {
     lateinit var databaseReference: DatabaseReference
 
 
-//    companion object {
-//        var date = ""
-//        val degreePattern = (+0x00B0).toChar() + "C"
-//    }
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -222,52 +216,7 @@ class HomeFragment : Fragment() {
         })
     }
 
-
-
-//
-//    private fun insertBpmData() {
-//        val dataVals = ArrayList<Entry>()
-//        dataVals.add(Entry(1f, 129f))
-//        dataVals.add(Entry(2f,  118f))
-//        dataVals.add(Entry(3f, 117f))
-//        dataVals.add(Entry(4f, 114f))
-//        dataVals.add(Entry(5f, 123f))
-//        dataVals.add(Entry(6f, 122f))
-//        dataVals.add(Entry(7f, 123f))
-//        dataVals.add(Entry(8f, 118f))
-//        dataVals.add(Entry(9f, 117f))
-//        dataVals.add(Entry(10f, 114f))
-//
-//
-//        showBpmChart(dataVals)
-//    }
-//
-//    private fun insertPiData() {
-//        val dataVals = ArrayList<Entry>()
-//        dataVals.add(Entry(1f, 10f))
-//        dataVals.add(Entry(2f, 12f))
-//        dataVals.add(Entry(3f, 8f))
-//        dataVals.add(Entry(4f, 19f))
-//        dataVals.add(Entry(5f, 21f))
-//        dataVals.add(Entry(6f, 29f))
-//        dataVals.add(Entry(7f, 6f))
-//        dataVals.add(Entry(8f, 10f))
-//
-//        showPiChart(dataVals)
-//    }
-
-
-//    private fun deleteBpmData() {
-//        bpmChart.clear()
-//        lineDataSet.clear()
-//    }
-//
-//    private fun deletePiData() {
-//        piChart.clear()
-//        lineDataSet.clear()
-//    }
-
-
+    // setup progerssbar
     private fun setProgressBar(value: Float) {
         progressSpo2Bar.apply {
             if (value <= 50) {
