@@ -221,11 +221,11 @@ class HomeFragment : Fragment() {
         progressSpo2Bar.apply {
             if (value <= 50) {
                 progressBarColor = resources.getColor(R.color.indikator_spo2_kurang)
-                setProgressWithAnimation(value, 0)
+                setProgressWithAnimation(value, 100L)
                 tv_spo2_value.text = "$value %"
             } else {
                 progressBarColor = resources.getColor(R.color.indikator_spo2_cukup)
-                setProgressWithAnimation(value, 0)
+                setProgressWithAnimation(value, 100L)
                 tv_spo2_value.text = "$value %"
             }
 
