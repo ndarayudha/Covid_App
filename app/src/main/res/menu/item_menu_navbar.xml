@@ -11,10 +11,6 @@
         android:icon="@drawable/ic_map"
         android:title="Location" />
 
-    <item
-        android:id="@+id/articleFragment"
-        android:icon="@drawable/ic_article"
-        android:title="Article" />
 
     <item
         android:id="@+id/settingFragment"

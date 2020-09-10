@@ -39,11 +39,10 @@ class HomeFragment : Fragment() {
     lateinit var databaseReference: DatabaseReference
 
 
-    companion object {
-        var suhu: Long? = 0L
-        var date = ""
-        val degreePattern = (+0x00B0).toChar() + "C"
-    }
+//    companion object {
+//        var date = ""
+//        val degreePattern = (+0x00B0).toChar() + "C"
+//    }
 
 
     override fun onCreateView(
@@ -62,21 +61,18 @@ class HomeFragment : Fragment() {
         bpmChart = view.findViewById(R.id.lineChart_BPM)
         piChart = view.findViewById(R.id.lineChart_PI)
 
+
         firebaseDatabase = FirebaseDatabase.getInstance()
         databaseReference = firebaseDatabase.getReference("pulse_oximetry")
+
 
         preference = Preferences(view.context)
         val name = preference.getValue("name")
         tv_name.text = name
 
 
-        progressBar2.apply {
-            setProgressWithAnimation(95f, 0)
-        }
-
-
         btn_pi_delete.setOnClickListener {
-//            deletePiData()
+            databaseReference.removeValue()
         }
     }
 
@@ -133,6 +129,35 @@ class HomeFragment : Fragment() {
 
     private fun getFirebaseData() = CoroutineScope(Dispatchers.IO).launch {
 
+
+            databaseReference.child("spo2").addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Log.d("DataFirebase", databaseError.toString())
+                }
+
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.hasChildren()) {
+                        for (myDataSnapshot in dataSnapshot.children) {
+
+                            val dataPoint = myDataSnapshot.getValue(String::class.java)
+                            val filterEscapeSequence = dataPoint?.split(Regex("[\n\r]"))
+                            val spo2Data = filterEscapeSequence!![0]
+
+
+                            if (spo2Data == "") {
+                                setProgressBar(0f)
+                            } else {
+                                setProgressBar(spo2Data.toFloat())
+                            }
+
+
+                        }
+                    }
+                }
+            })
+
+
+
             databaseReference.child("bpm").addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(databaseError: DatabaseError) {
                     Log.d("DataFirebase", databaseError.toString())
@@ -164,6 +189,38 @@ class HomeFragment : Fragment() {
                     }
                 }
             })
+
+
+        databaseReference.child("pi").addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.d("DataFirebase", databaseError.toString())
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val dataPi = ArrayList<Entry>()
+                var xAxis = 0
+
+                if (dataSnapshot.hasChildren()) {
+
+                    for (myDataSnapshot in dataSnapshot.children) {
+
+                        val dataPoint = myDataSnapshot.getValue(String::class.java)
+                        val filterEscapeSequence = dataPoint?.split(Regex("[\n\r]"))
+                        val piData = filterEscapeSequence!![0]
+
+                        if (piData == "") {
+                            dataPi.add(Entry(xAxis.toFloat(), 0f))
+                        } else {
+                            dataPi.add(Entry(xAxis.toFloat(), piData.toFloat()))
+                        }
+
+                        xAxis++
+                    }
+
+                    showPiChart(dataPi)
+                }
+            }
+        })
     }
 
 
@@ -211,6 +268,14 @@ class HomeFragment : Fragment() {
 //        lineDataSet.clear()
 //    }
 
+
+    private fun setProgressBar(value: Float) {
+        progressSpo2Bar.apply {
+            setProgressWithAnimation(value, 0)
+            tv_spo2_value.text = "$value %"
+            progressMax = value
+        }
+    }
 
     private fun showBpmChart(dataVals: ArrayList<Entry>) {
         lineDataSet.values = dataVals

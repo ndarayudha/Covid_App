@@ -83,11 +83,6 @@ class OnboardingActivity : AppCompatActivity() {
                         btnLeft.isEnabled = false
                         btnRight.text = "Next"
                     }
-                    2 -> {
-                        btnLeft.visibility = View.GONE
-                        btnLeft.isEnabled = false
-                        btnRight.text = "Next"
-                    }
                     else -> {
                         btnLeft.visibility = View.GONE
                         btnLeft.isEnabled = false
