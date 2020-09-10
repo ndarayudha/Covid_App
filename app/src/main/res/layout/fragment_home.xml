@@ -142,24 +142,25 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_spo2_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="80dp"
                     android:layout_marginTop="50dp"
-                    android:text="97%"
+                    tools:text="0"
                     android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <com.mikhaellopez.circularprogressbar.CircularProgressBar
-                    android:id="@+id/progressBar2"
+                    android:id="@+id/progressSpo2Bar"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="15dp"
                     app:cpb_background_progressbar_color="@color/colorGrayLight"
                     app:cpb_background_progressbar_width="7dp"
-                    app:cpb_progress_max="100"
+                    app:cpb_progress_max="0"
                     app:cpb_progressbar_color="#388E3C"
                     app:cpb_round_border="true">
 
@@ -172,7 +173,7 @@
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/lineChart_BPM"
                 android:layout_width="360dp"
-                android:layout_height="360dp"
+                android:layout_height="150dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -182,7 +183,8 @@
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/lineChart_PI"
                 android:layout_width="360dp"
-                android:layout_height="360dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lineChart_BPM" />
@@ -195,13 +197,6 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/lineChart_PI">
-
-<!--                <Button-->
-<!--                    android:id="@+id/btn_pi_insert"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginRight="16dp"-->
-<!--                    android:text="insert" />-->
 
                 <Button
                     android:id="@+id/btn_pi_delete"

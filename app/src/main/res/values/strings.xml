@@ -18,7 +18,6 @@
 
     <string-array name="onboardingTitle">
         <item>Rencanakan Kesehatan</item>
-        <item>Artikel mengenai covid-19</item>
         <item>Pengguna Sekitar</item>
         <item>Cek Kadar O2</item>
     </string-array>
@@ -26,7 +25,6 @@
 
     <string-array name="onboardingDescription">
         <item>Cek secara rutin kesehatan anda di\nlayanan kesehatan terdekat</item>
-        <item>Dapatkan artikel terbaru seputar covid-19</item>
         <item>Ketahui pengguna di sekitar anda</item>
         <item>Pantau kadar O2 terlarut dalam darah</item>
     </string-array>
@@ -34,7 +32,6 @@
 
     <string-array name="onboardingImages">
         <item>@drawable/gambar1</item>
-        <item>@drawable/gambar2</item>
         <item>@drawable/gambar3</item>
         <item>@drawable/gambar4</item>
     </string-array>
