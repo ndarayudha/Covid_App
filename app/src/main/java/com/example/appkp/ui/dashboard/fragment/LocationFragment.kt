@@ -52,9 +52,4 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
         map.addMarker(MarkerOptions().position(location2).title("Lokasi 2"))
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(location1, zoom))
     }
-
-
-
-
-
 }

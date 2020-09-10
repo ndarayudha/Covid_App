@@ -143,13 +143,11 @@ class HomeFragment : Fragment() {
                             val filterEscapeSequence = dataPoint?.split(Regex("[\n\r]"))
                             val spo2Data = filterEscapeSequence!![0]
 
-
                             if (spo2Data == "") {
                                 setProgressBar(0f)
                             } else {
                                 setProgressBar(spo2Data.toFloat())
                             }
-
 
                         }
                     }
@@ -177,7 +175,7 @@ class HomeFragment : Fragment() {
                             val bpmData = filterEscapeSequence!![0]
 
                             if (bpmData == "") {
-                                dataBpms.add(Entry(xAxis.toFloat(), 0f))
+                                Log.d("DataFirebase", "Data Empty")
                             } else {
                                 dataBpms.add(Entry(xAxis.toFloat(), bpmData.toFloat()))
                             }
@@ -209,7 +207,7 @@ class HomeFragment : Fragment() {
                         val piData = filterEscapeSequence!![0]
 
                         if (piData == "") {
-                            dataPi.add(Entry(xAxis.toFloat(), 0f))
+                            Log.d("DataFirebase", "Data Empty")
                         } else {
                             dataPi.add(Entry(xAxis.toFloat(), piData.toFloat()))
                         }
@@ -271,9 +269,16 @@ class HomeFragment : Fragment() {
 
     private fun setProgressBar(value: Float) {
         progressSpo2Bar.apply {
-            setProgressWithAnimation(value, 0)
-            tv_spo2_value.text = "$value %"
-            progressMax = value
+            if (value <= 50) {
+                progressBarColor = resources.getColor(R.color.indikator_spo2_kurang)
+                setProgressWithAnimation(value, 0)
+                tv_spo2_value.text = "$value %"
+            } else {
+                progressBarColor = resources.getColor(R.color.indikator_spo2_cukup)
+                setProgressWithAnimation(value, 0)
+                tv_spo2_value.text = "$value %"
+            }
+
         }
     }
 
@@ -299,7 +304,6 @@ class HomeFragment : Fragment() {
         piChart.invalidate()
     }
 
-
     private fun bpmFormatter() {
         // init formatter
         bpmChart.axisLeft.valueFormatter = MyValueFormarter()
@@ -314,7 +318,6 @@ class HomeFragment : Fragment() {
         piChart.xAxis.valueFormatter = MyXAxisFormatter()
     }
 
-
     private fun bpmChartStyle() {
         bpmChart.setNoDataTextColor(Color.BLACK)
         bpmChart.setDrawBorders(true)
@@ -328,7 +331,6 @@ class HomeFragment : Fragment() {
         lineDataSet.valueTextSize = 10f
         lineDataSet.valueTextColor = Color.BLACK
     }
-
 
     private fun piChartStyle() {
         bpmChart.setNoDataTextColor(Color.BLACK)
