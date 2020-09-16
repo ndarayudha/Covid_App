@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -33,13 +34,15 @@ class HomeFragment : Fragment() {
 
     lateinit var piChart: LineChart
     lateinit var bpmChart: LineChart
-    lateinit var lineDataSet: LineDataSet
-    lateinit var iLineDataSet: ArrayList<ILineDataSet>
-    lateinit var lineData: LineData
+    lateinit var piLineDataSet: LineDataSet
+    lateinit var bpmLineDataSet: LineDataSet
+    lateinit var piILineDataSet: ArrayList<ILineDataSet>
+    lateinit var bpmILineDataSet: ArrayList<ILineDataSet>
+    lateinit var piLineData: LineData
+    lateinit var bpmLineData: LineData
     lateinit var preference: Preferences
     lateinit var firebaseDatabase: FirebaseDatabase
     lateinit var databaseReference: DatabaseReference
-
 
 
     override fun onCreateView(
@@ -77,112 +80,84 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        lineDataSet = LineDataSet(null, null)
-        iLineDataSet = ArrayList()
-        lineData = LineData()
+        piLineDataSet = LineDataSet(null, null)
+        piILineDataSet = ArrayList()
+        bpmLineDataSet = LineDataSet(null, null)
+        bpmILineDataSet = ArrayList()
+        piLineData = LineData()
+        bpmLineData = LineData()
 
 
-        bpmFormatter()
-        piFormatter()
         bpmChartStyle()
+        bpmFormatter()
         piChartStyle()
+        piFormatter()
+    }
+
+    override fun onResume() {
+        super.onResume()
 
         getFirebaseData()
     }
 
 
-//    private fun getThingspeakData() {
-//
-//        RetrofitBuilder(Constant.BASE_THINGSPEAK_URL).api.getThingspeakData(10)
-//            .enqueue(object : Callback<ThingspeakResponse> {
-//
-//                override fun onFailure(call: Call<ThingspeakResponse>, t: Throwable) {
-//                    Log.d("ThingspeakError", t.message)
-//                }
-//
-//                override fun onResponse(
-//                    call: Call<ThingspeakResponse>,
-//                    response: Response<ThingspeakResponse>
-//                ) {
-//                    val result = response.body()!!.feeds
-//                    val size = response.body()?.feeds?.size
-//
-//                    for (feeds in result) {
-//                        Log.d("ThingspeakData", "Data ke ${feeds.entryId}")
-//                        Log.d("ThingspeakData", "Spo2 = ${feeds.field1}")
-//                        Log.d("ThingspeakData", "BPM = ${feeds.field2}")
-//                        Log.d("ThingspeakData", "PI = ${feeds.field3}")
-//                        Log.d("ThingspeakData", "Latitude = ${feeds.field4}")
-//                        Log.d("ThingspeakData", "Longitude = ${feeds.field5}")
-//                    }
-//
-//                    Log.d("ThingspeakSuccess", size.toString())
-//                    Log.d("ThingspeakSuccess", result.toString())
-//                }
-//
-//            })
-//    }
-
-
     private fun getFirebaseData() = CoroutineScope(Dispatchers.IO).launch {
 
 
-            databaseReference.child("spo2").addValueEventListener(object : ValueEventListener {
-                override fun onCancelled(databaseError: DatabaseError) {
-                    Log.d("DataFirebase", databaseError.toString())
-                }
+        databaseReference.child("spo2").addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.d("DataFirebase", databaseError.toString())
+            }
 
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    if (dataSnapshot.hasChildren()) {
-                        for (myDataSnapshot in dataSnapshot.children) {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.hasChildren()) {
+                    for (myDataSnapshot in dataSnapshot.children) {
 
-                            val dataPoint = myDataSnapshot.getValue(String::class.java)
-                            val filterEscapeSequence = dataPoint?.split(Regex("[\n\r]"))
-                            val spo2Data = filterEscapeSequence!![0]
+                        val dataPoint = myDataSnapshot.getValue(String::class.java)
+                        val filterEscapeSequence = dataPoint?.split(Regex("[\n\r]"))
+                        val spo2Data = filterEscapeSequence!![0]
 
-                            if (spo2Data == "") {
-                                setProgressBar(0f)
-                            } else {
-                                setProgressBar(spo2Data.toFloat())
-                            }
-
+                        if (spo2Data == "") {
+                            setProgressBar(0f)
+                        } else {
+                            setProgressBar(spo2Data.toFloat())
                         }
                     }
                 }
-            })
+            }
+        })
 
 
+        databaseReference.child("bpm").addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.d("DataFirebase", databaseError.toString())
+            }
 
-            databaseReference.child("bpm").addValueEventListener(object : ValueEventListener {
-                override fun onCancelled(databaseError: DatabaseError) {
-                    Log.d("DataFirebase", databaseError.toString())
-                }
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val dataBpm = ArrayList<Entry>()
+                var xAxis = 0
 
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    val dataBpm = ArrayList<Entry>()
-                    var xAxis = 0
+                if (dataSnapshot.hasChildren()) {
 
-                    if (dataSnapshot.hasChildren()) {
+                    for (myDataSnapshot in dataSnapshot.children) {
 
-                        for (myDataSnapshot in dataSnapshot.children) {
+                        val dataPoint = myDataSnapshot.getValue(String::class.java)
+                        val filterEscapeSequence = dataPoint?.split(Regex("[\n\r]"))
+                        val bpmData = filterEscapeSequence!![0]
 
-                            val dataPoint = myDataSnapshot.getValue(String::class.java)
-                            val filterEscapeSequence = dataPoint?.split(Regex("[\n\r]"))
-                            val bpmData = filterEscapeSequence!![0]
-
-                            if (bpmData == "") {
-                                Log.d("DataFirebase", "Data Empty")
-                            } else {
-                                dataBpm.add(Entry(xAxis.toFloat(), bpmData.toFloat()))
-                            }
-
-                            xAxis++
+                        if (bpmData == "") {
+                            Log.d("DataFirebase", "Data Empty")
+                        } else {
+                            dataBpm.add(Entry(xAxis.toFloat(), bpmData.toFloat()))
                         }
 
-                        showBpmChart(dataBpm)
+                        xAxis++
                     }
+
+                    showBpmChart(dataBpm)
                 }
-            })
+            }
+        })
 
 
         databaseReference.child("pi").addValueEventListener(object : ValueEventListener {
@@ -221,85 +196,79 @@ class HomeFragment : Fragment() {
 
     // setup progerssbar
     private fun setProgressBar(value: Float) {
-        progressSpo2Bar.apply {
+        progressSpo2Bar?.apply {
             if (value <= 50) {
                 progressBarColor = resources.getColor(indikator_spo2_kurang)
                 setProgressWithAnimation(value, 1)
-                tv_spo2_value.text = "$value %"
+                tv_spo2_value?.text = "$value %"
             } else {
                 progressBarColor = resources.getColor(indikator_spo2_cukup)
                 setProgressWithAnimation(value, 1)
-                tv_spo2_value.text = "$value %"
+                tv_spo2_value?.text = "$value %"
             }
-
         }
     }
 
-    private fun showBpmChart(dataVals: ArrayList<Entry>) {
-        lineDataSet.values = dataVals
-        lineDataSet.label = "Data BPM"
-        iLineDataSet.clear()
-        iLineDataSet.add(lineDataSet)
-        lineData = LineData(iLineDataSet)
+
+    private fun showBpmChart(dataVals: ArrayList<Entry>) = CoroutineScope(Dispatchers.IO).launch {
+        bpmLineDataSet.values = dataVals
+        bpmLineDataSet.label = "Data BPM"
+        bpmILineDataSet.clear()
+        bpmILineDataSet.add(bpmLineDataSet)
+        bpmLineData = LineData(bpmILineDataSet)
         bpmChart.clear()
-        bpmChart.data = lineData
+        bpmChart.data = bpmLineData
         bpmChart.invalidate()
     }
 
-    private fun showPiChart(dataVals: ArrayList<Entry>) {
-        lineDataSet.values = dataVals
-        lineDataSet.label = "Data PI"
-        iLineDataSet.clear()
-        iLineDataSet.add(lineDataSet)
-        lineData = LineData(iLineDataSet)
+    private fun showPiChart(dataVals: ArrayList<Entry>) = CoroutineScope(Dispatchers.IO).launch {
+        piLineDataSet.values = dataVals
+        piLineDataSet.label = "Data PI"
+        piILineDataSet.clear()
+        piILineDataSet.add(piLineDataSet)
+        piLineData = LineData(piILineDataSet)
         piChart.clear()
-        piChart.data = lineData
+        piChart.data = piLineData
         piChart.invalidate()
     }
 
-    private fun bpmFormatter() {
+    private fun bpmFormatter() = CoroutineScope(Dispatchers.Default).launch {
         // init formatter
-        bpmChart.axisLeft.valueFormatter = MyValueFormarter()
-//        lineDataSet.valueFormatter = MyValueFormarter()
         bpmChart.xAxis.valueFormatter = MyXAxisFormatter()
     }
 
-    private fun piFormatter() {
+    private fun piFormatter() = CoroutineScope(Dispatchers.Default).launch {
         // init formatter
-        piChart.axisLeft.valueFormatter = MyValueFormarter()
-//        lineDataSet.valueFormatter = MyValueFormarter()
         piChart.xAxis.valueFormatter = MyXAxisFormatter()
     }
 
-    private fun bpmChartStyle() {
+    private fun bpmChartStyle() = CoroutineScope(Dispatchers.Default).launch {
         bpmChart.setNoDataTextColor(Color.BLACK)
         bpmChart.setDrawBorders(true)
         bpmChart.isScaleYEnabled = false
         bpmChart.isDoubleTapToZoomEnabled = false
-        lineDataSet.highLightColor = Color.RED
-        lineDataSet.highlightLineWidth = 1f
-        lineDataSet.color = Color.BLUE
-        lineDataSet.circleHoleColor = Color.BLACK
-        lineDataSet.lineWidth = 2f
-        lineDataSet.valueTextSize = 10f
-        lineDataSet.valueTextColor = Color.BLACK
+        bpmLineDataSet.highLightColor = Color.RED
+        bpmLineDataSet.highlightLineWidth = 1f
+        bpmLineDataSet.color = Color.BLUE
+        bpmLineDataSet.circleHoleColor = Color.BLACK
+        bpmLineDataSet.lineWidth = 2f
+        bpmLineDataSet.valueTextSize = 10f
+        bpmLineDataSet.valueTextColor = Color.BLACK
     }
 
-    private fun piChartStyle() {
+    private fun piChartStyle() = CoroutineScope(Dispatchers.Default).launch {
         piChart.setNoDataTextColor(Color.BLACK)
         piChart.setDrawBorders(true)
         piChart.isScaleYEnabled = false
         piChart.isDoubleTapToZoomEnabled = false
-        lineDataSet.highLightColor = Color.RED
-        lineDataSet.highlightLineWidth = 1f
-        lineDataSet.color = Color.BLUE
-        lineDataSet.circleHoleColor = Color.BLACK
-        lineDataSet.lineWidth = 2f
-        lineDataSet.valueTextSize = 10f
-        lineDataSet.valueTextColor = Color.BLACK
+        piLineDataSet.highLightColor = Color.RED
+        piLineDataSet.highlightLineWidth = 1f
+        piLineDataSet.color = Color.BLUE
+        piLineDataSet.circleHoleColor = Color.BLACK
+        piLineDataSet.lineWidth = 2f
+        piLineDataSet.valueTextSize = 10f
+        piLineDataSet.valueTextColor = Color.BLACK
     }
-
-
 }
 
 
