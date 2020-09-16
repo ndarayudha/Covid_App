@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.appkp.R
+import com.example.appkp.R.color.indikator_spo2_cukup
+import com.example.appkp.R.color.indikator_spo2_kurang
 import com.example.appkp.formatter.MyValueFormarter
 import com.example.appkp.formatter.MyXAxisFormatter
 import com.example.appkp.util.Preferences
@@ -220,12 +222,12 @@ class HomeFragment : Fragment() {
     private fun setProgressBar(value: Float) {
         progressSpo2Bar.apply {
             if (value <= 50) {
-                progressBarColor = resources.getColor(R.color.indikator_spo2_kurang)
-                setProgressWithAnimation(value, 100L)
+                progressBarColor = resources.getColor(indikator_spo2_kurang)
+                setProgressWithAnimation(value, 1)
                 tv_spo2_value.text = "$value %"
             } else {
-                progressBarColor = resources.getColor(R.color.indikator_spo2_cukup)
-                setProgressWithAnimation(value, 100L)
+                progressBarColor = resources.getColor(indikator_spo2_cukup)
+                setProgressWithAnimation(value, 1)
                 tv_spo2_value.text = "$value %"
             }
 

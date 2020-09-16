@@ -92,7 +92,7 @@
                 android:id="@+id/cardView2"
                 android:layout_width="360dp"
                 android:layout_height="130dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.49"
@@ -170,33 +170,59 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/lineChart_BPM"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView2"
                 android:layout_width="360dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="230dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart_BPM"
+                    android:layout_width="360dp"
+                    android:layout_height="230dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/lineChart_PI"
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView3"
                 android:layout_width="360dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="30dp"
+                android:layout_height="230dp"
+                app:cardCornerRadius="20dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lineChart_BPM" />
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart_PI"
+                    android:layout_width="360dp"
+                    android:layout_height="230dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lineChart_BPM" />
+
+            </com.google.android.material.card.MaterialCardView>
 
 
             <LinearLayout
                 android:id="@+id/linearLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 android:gravity="center"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/lineChart_PI">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView3">
 
                 <Button
                     android:id="@+id/btn_pi_delete"
@@ -207,7 +233,6 @@
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.core.widget.NestedScrollView>
 

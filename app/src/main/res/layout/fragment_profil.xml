@@ -110,82 +110,14 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+
+
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="150dp"
-                        android:hint="Email"
-                        app:endIconMode="clear_text"
-                        app:boxStrokeColor="@color/colorPrimary"
-                        app:hintAnimationEnabled="true"
-                        app:hintTextColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:placeholderTextColor="@color/colorPrimary"
-                        app:startIconDrawable="@drawable/ic_email_24px"
-                        app:startIconTint="@color/colorDarkSecondary">
-
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:cursorVisible="true"
-                            android:lines="1"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:inputType="textEmailAddress"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="220dp"
-                        android:hint="Password"
-                        app:endIconMode="clear_text"
-                        app:boxStrokeColor="@color/colorPrimary"
-                        app:hintAnimationEnabled="true"
-                        app:hintTextColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:placeholderTextColor="@color/colorPrimary"
-                        app:startIconDrawable="@drawable/ic_lock_24px"
-                        app:startIconTint="@color/colorDarkSecondary">
-
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:cursorVisible="true"
-                            android:lines="1"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:inputType="textPassword"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="290dp"
                         android:hint="Tanggal Lahir"
                         app:endIconMode="clear_text"
                         app:boxStrokeColor="@color/colorPrimary"
@@ -221,7 +153,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="360dp"
+                        android:layout_marginTop="220dp"
                         android:hint="Jenis Kelamin"
                         app:endIconMode="clear_text"
                         app:boxStrokeColor="@color/colorPrimary"
@@ -256,7 +188,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="430dp"
+                        android:layout_marginTop="290dp"
                         android:hint="Alamat"
                         app:endIconMode="clear_text"
                         app:boxStrokeColor="@color/colorPrimary"
@@ -290,7 +222,7 @@
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="240dp"
+                        android:layout_marginTop="120dp"
                         android:background="@drawable/btn_style"
                         android:text="Simpan Perubahan"
                         android:textAlignment="center"
