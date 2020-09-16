@@ -146,7 +146,7 @@
                     android:id="@+id/tv_spo2_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="80dp"
+                    android:layout_marginStart="70dp"
                     android:layout_marginTop="50dp"
                     tools:text="0"
                     android:textColor="@color/colorPrimary"
@@ -167,14 +167,13 @@
 
                 </com.mikhaellopez.circularprogressbar.CircularProgressBar>
 
-
             </com.google.android.material.card.MaterialCardView>
 
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView2"
                 android:layout_width="360dp"
-                android:layout_height="230dp"
+                android:layout_height="270dp"
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -183,9 +182,10 @@
 
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/lineChart_BPM"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="230dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginVertical="20dp"
+                    android:layout_marginHorizontal="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardView2" />
@@ -195,8 +195,9 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView3"
                 android:layout_width="360dp"
-                android:layout_height="230dp"
+                android:layout_height="270dp"
                 app:cardCornerRadius="20dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -204,9 +205,10 @@
 
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/lineChart_PI"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="230dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginVertical="20dp"
+                    android:layout_marginHorizontal="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lineChart_BPM" />

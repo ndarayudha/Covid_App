@@ -159,8 +159,7 @@ class HomeFragment : Fragment() {
                 }
 
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                    val dataBpms = ArrayList<Entry>()
+                    val dataBpm = ArrayList<Entry>()
                     var xAxis = 0
 
                     if (dataSnapshot.hasChildren()) {
@@ -174,13 +173,13 @@ class HomeFragment : Fragment() {
                             if (bpmData == "") {
                                 Log.d("DataFirebase", "Data Empty")
                             } else {
-                                dataBpms.add(Entry(xAxis.toFloat(), bpmData.toFloat()))
+                                dataBpm.add(Entry(xAxis.toFloat(), bpmData.toFloat()))
                             }
 
                             xAxis++
                         }
 
-                        showBpmChart(dataBpms)
+                        showBpmChart(dataBpm)
                     }
                 }
             })
@@ -217,6 +216,8 @@ class HomeFragment : Fragment() {
             }
         })
     }
+
+
 
     // setup progerssbar
     private fun setProgressBar(value: Float) {
@@ -285,10 +286,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun piChartStyle() {
-        bpmChart.setNoDataTextColor(Color.BLACK)
-        bpmChart.setDrawBorders(true)
-        bpmChart.isScaleYEnabled = false
-        bpmChart.isDoubleTapToZoomEnabled = false
+        piChart.setNoDataTextColor(Color.BLACK)
+        piChart.setDrawBorders(true)
+        piChart.isScaleYEnabled = false
+        piChart.isDoubleTapToZoomEnabled = false
         lineDataSet.highLightColor = Color.RED
         lineDataSet.highlightLineWidth = 1f
         lineDataSet.color = Color.BLUE
