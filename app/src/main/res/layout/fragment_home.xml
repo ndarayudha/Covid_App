@@ -7,7 +7,6 @@
     android:background="@color/colorGrayLight"
     tools:context=".ui.dashboard.fragment.HomeFragment">
 
-    <!--    bagian scroll view-->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,7 +28,6 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/home_CardView"
@@ -76,7 +74,7 @@
                         android:layout_height="70dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="20dp"
-                        android:src="@drawable/userimage"
+                        android:src="@drawable/alfin"
                         app:civ_border_color="@color/colorWhite"
                         app:civ_border_width="2dp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -87,6 +85,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
+
 
 
             <com.google.android.material.card.MaterialCardView
@@ -113,7 +112,6 @@
                     android:layout_marginStart="200dp"
                     android:layout_marginTop="70dp"
                     app:cardBackgroundColor="@color/indikator_spo2_kurang" />
-
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -148,10 +146,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="70dp"
                     android:layout_marginTop="50dp"
+                    tools:text="0"
                     android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="0" />
+                    android:textStyle="bold" />
 
                 <com.mikhaellopez.circularprogressbar.CircularProgressBar
                     android:id="@+id/progressSpo2Bar"
@@ -170,127 +168,159 @@
             </com.google.android.material.card.MaterialCardView>
 
 
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView2"
                 android:layout_width="360dp"
-                android:layout_height="350dp"
+                android:layout_height="370dp"
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/lineChart_BPM"
-                    android:layout_width="match_parent"
-                    android:layout_height="230dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginVertical="20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp"
+                    android:text="Waktu"
+                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="130dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:text="%"/>
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart_BPM"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="260dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginEnd="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="280dp"
                     android:text="Keterangan : "
                     android:textColor="@color/colorBlack" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="10dp"
                     android:layout_height="10dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="290dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="310dp"
                     app:cardBackgroundColor="@color/indikator_spo2_cukup" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="10dp"
                     android:layout_height="10dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="310dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="330dp"
                     app:cardBackgroundColor="@color/indikator_spo2_kurang" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="285dp"
-                    android:text="Normal"
-                    android:textColor="@color/colorBlack" />
+                    android:layout_marginTop="305dp"
+                    android:layout_marginStart="60dp"
+                    android:textColor="@color/colorBlack"
+                    android:text="Normal"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="305dp"
-                    android:text="Kurang"
-                    android:textColor="@color/colorBlack" />
-
+                    android:layout_marginTop="325dp"
+                    android:layout_marginStart="60dp"
+                    android:textColor="@color/colorBlack"
+                    android:text="Kurang"/>
 
             </com.google.android.material.card.MaterialCardView>
+
+
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView3"
                 android:layout_width="360dp"
-                android:layout_height="350dp"
-                android:layout_marginHorizontal="20dp"
+                android:layout_height="370dp"
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
 
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/lineChart_PI"
-                    android:layout_width="match_parent"
-                    android:layout_height="230dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginVertical="20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lineChart_BPM" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp"
+                    android:text="Waktu"
+                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="130dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:text="%"/>
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart_PI"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="260dp"
-                    android:text="Keterangan : "
-                    android:textColor="@color/colorBlack" />
+                    android:layout_marginTop="35dp"
+                    android:layout_marginEnd="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="280dp"
+                    android:layout_marginStart="40dp"
+                    android:textColor="@color/colorBlack"
+                    android:text="Keterangan : "/>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="10dp"
                     android:layout_height="10dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="290dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="310dp"
                     app:cardBackgroundColor="@color/indikator_spo2_cukup" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="10dp"
                     android:layout_height="10dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="310dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="330dp"
                     app:cardBackgroundColor="@color/indikator_spo2_kurang" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="285dp"
-                    android:text="Normal"
-                    android:textColor="@color/colorBlack" />
+                    android:layout_marginTop="305dp"
+                    android:layout_marginStart="60dp"
+                    android:textColor="@color/colorBlack"
+                    android:text="Normal"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="305dp"
-                    android:text="Kurang"
-                    android:textColor="@color/colorBlack" />
+                    android:layout_marginTop="325dp"
+                    android:layout_marginStart="60dp"
+                    android:textColor="@color/colorBlack"
+                    android:text="Kurang"/>
 
             </com.google.android.material.card.MaterialCardView>
+
 
 
             <LinearLayout
