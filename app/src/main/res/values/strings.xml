@@ -60,6 +60,7 @@
     <string name="btn_batalkan">Batalkan</string>
     <string name="btn_logout">Logout</string>
     <string name="apakah_anda_yakin">Apakah anda yakin?</string>
+    <string name="copyright">Develop by Poliwangi Student</string>
 
 
 </resources>

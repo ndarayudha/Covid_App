@@ -3,6 +3,7 @@ package com.example.appkp.api
 import com.example.appkp.model.auth.AuthResponse
 import com.example.appkp.model.auth.LogoutResponse
 import com.example.appkp.model.auth.UserPhotoResponse
+import com.example.appkp.model.sensors.SensorResponse
 import com.example.appkp.model.thingspeak.ThingspeakResponse
 import com.example.appkp.util.Constant
 import retrofit2.Call
@@ -42,6 +43,20 @@ interface API {
     fun logout(
         @Header("Authorization") token: String
     ) : Call<LogoutResponse>
+
+
+    /**
+     * Update data sensor
+     */
+
+    @FormUrlEncoded
+    @POST("api/sensor")
+    fun updateSensor(
+        @Field("spo2") spo2 : String,
+        @Field("bpm") bpm : String,
+        @Field("pi") pi : String,
+        @Header("Authorization") token: String
+    ) : Call<SensorResponse>
 
 
 
