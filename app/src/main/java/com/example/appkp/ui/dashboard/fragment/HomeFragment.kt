@@ -1,5 +1,7 @@
 package com.example.appkp.ui.dashboard.fragment
 
+import android.content.Intent
+import android.content.ServiceConnection
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +15,7 @@ import com.example.appkp.R.color.indikator_spo2_kurang
 import com.example.appkp.api.RetrofitBuilder
 import com.example.appkp.formatter.MyXAxisFormatter
 import com.example.appkp.model.sensors.SensorResponse
+import com.example.appkp.service.InsertSensorService
 import com.example.appkp.util.Constant
 import com.example.appkp.util.Preferences
 import com.github.mikephil.charting.charts.LineChart
@@ -45,7 +48,6 @@ class HomeFragment : Fragment() {
     lateinit var preference: Preferences
     lateinit var firebaseDatabase: FirebaseDatabase
     lateinit var databaseReference: DatabaseReference
-
 
 
 
@@ -107,19 +109,31 @@ class HomeFragment : Fragment() {
         bpmFormatter()
         piChartStyle()
         piFormatter()
-
     }
 
     override fun onResume() {
         super.onResume()
         getFirebaseData()
-        insertDataSensor(spo2, bpm, pi)
+//        insertDataSensor(spo2, bpm, pi)
     }
 
     override fun onPause() {
         super.onPause()
-        insertDataSensor(spo2, bpm, pi)
+//        insertDataSensor(spo2, bpm, pi)
     }
+
+
+    private fun startSendDataSensorService(bpm: String, spo2: String, pi: String){
+        val startIntentService = Intent(context, InsertSensorService::class.java)
+        startIntentService.setPackage("com.example.appkp.service.action")
+        startIntentService.action = InsertSensorService.ACTION_SEND_SENSOR_DATA
+        startIntentService.putExtra(InsertSensorService.EXTRA_BPM, bpm)
+        startIntentService.putExtra(InsertSensorService.EXTRA_SPO2, spo2)
+        startIntentService.putExtra(InsertSensorService.EXTRA_PI, pi)
+        activity?.startService(startIntentService)
+    }
+
+
 
     private fun getFirebaseData() = CoroutineScope(Dispatchers.IO).launch {
 
@@ -201,7 +215,7 @@ class HomeFragment : Fragment() {
                         val filterEscapeSequence = dataPoint?.split(Regex("[\n\r]"))
                         val piData = filterEscapeSequence!![0]
                         HomeFragment.pi = piData
-
+                        startSendDataSensorService(bpm, spo2, pi)
 
                         if (piData == "") {
                             Log.d("DataFirebase", "Data Empty")
@@ -216,29 +230,8 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+
     }
-
-
-
-    private fun insertDataSensor(spo2: String, bpm: String, pi: String) =
-        CoroutineScope(Dispatchers.IO).launch {
-
-            val token = preference.getValue("token")
-
-           RetrofitBuilder(Constant.BASE_URL).api.insertSensorData(bpm, spo2, pi, "Bearer $token")
-               .enqueue(object : Callback<SensorResponse> {
-                   override fun onFailure(call: Call<SensorResponse>, t: Throwable) {
-
-                   }
-
-                   override fun onResponse(
-                       call: Call<SensorResponse>,
-                       response: Response<SensorResponse>
-                   ) {
-
-                   }
-               })
-        }
 
 
 

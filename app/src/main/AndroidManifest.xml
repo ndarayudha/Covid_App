@@ -16,9 +16,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+
         <service
-            android:name=".service.MySensorService"
-            android:exported="false"></service>
+            android:name=".service.InsertSensorService"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
