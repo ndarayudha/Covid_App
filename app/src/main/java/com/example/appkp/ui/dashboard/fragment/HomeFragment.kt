@@ -124,12 +124,15 @@ class HomeFragment : Fragment() {
 
 
     private fun startSendDataSensorService(bpm: String, spo2: String, pi: String){
+        val token = preference.getValue("token")!!
+
         val startIntentService = Intent(context, InsertSensorService::class.java)
         startIntentService.setPackage("com.example.appkp.service.action")
         startIntentService.action = InsertSensorService.ACTION_SEND_SENSOR_DATA
         startIntentService.putExtra(InsertSensorService.EXTRA_BPM, bpm)
         startIntentService.putExtra(InsertSensorService.EXTRA_SPO2, spo2)
         startIntentService.putExtra(InsertSensorService.EXTRA_PI, pi)
+        startIntentService.putExtra(InsertSensorService.EXTRA_TOKEN, token)
         activity?.startService(startIntentService)
     }
 
@@ -207,7 +210,6 @@ class HomeFragment : Fragment() {
                 var xAxis = 0
 
                 if (dataSnapshot.hasChildren()) {
-
 
                     for (myDataSnapshot in dataSnapshot.children) {
 
