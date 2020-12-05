@@ -253,6 +253,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="340dp"
             android:text="Sign Up"
+            android:foreground="?android:selectableItemBackground"
             app:cardCornerRadius="50dp">
 
             <TextView

@@ -11,7 +11,6 @@ import com.example.appkp.R
 import com.example.appkp.R.color.indikator_spo2_cukup
 import com.example.appkp.R.color.indikator_spo2_kurang
 import com.example.appkp.api.RetrofitBuilder
-import com.example.appkp.formatter.MyValueFormarter
 import com.example.appkp.formatter.MyXAxisFormatter
 import com.example.appkp.model.sensors.SensorResponse
 import com.example.appkp.util.Constant
@@ -26,12 +25,9 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -51,10 +47,13 @@ class HomeFragment : Fragment() {
     lateinit var databaseReference: DatabaseReference
 
 
-    var spo2: String = ""
-    var bpm: String = ""
-    var pi: String = ""
 
+
+    companion object{
+        var spo2: String = ""
+        var bpm: String = ""
+        var pi: String = ""
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -109,10 +108,17 @@ class HomeFragment : Fragment() {
         piChartStyle()
         piFormatter()
 
+    }
 
+    override fun onResume() {
+        super.onResume()
         getFirebaseData()
-        updateDataSensor(spo2, bpm, pi)
+        insertDataSensor(spo2, bpm, pi)
+    }
 
+    override fun onPause() {
+        super.onPause()
+        insertDataSensor(spo2, bpm, pi)
     }
 
     private fun getFirebaseData() = CoroutineScope(Dispatchers.IO).launch {
@@ -129,7 +135,7 @@ class HomeFragment : Fragment() {
                         val dataPoint = myDataSnapshot.getValue(String::class.java)
                         val filterEscapeSequence = dataPoint?.split(Regex("[\n\r]"))
                         val spo2Data = filterEscapeSequence!![0]
-                        spo2 = spo2Data
+                        HomeFragment.spo2 = spo2Data
 
 
                         if (spo2Data == "") {
@@ -159,7 +165,7 @@ class HomeFragment : Fragment() {
                         val dataPoint = myDataSnapshot.getValue(String::class.java)
                         val filterEscapeSequence = dataPoint?.split(Regex("[\n\r]"))
                         val bpmData = filterEscapeSequence!![0]
-                        bpm = bpmData
+                        HomeFragment.bpm = bpmData
 
 
                         if (bpmData == "") {
@@ -194,7 +200,7 @@ class HomeFragment : Fragment() {
                         val dataPoint = myDataSnapshot.getValue(String::class.java)
                         val filterEscapeSequence = dataPoint?.split(Regex("[\n\r]"))
                         val piData = filterEscapeSequence!![0]
-                        pi = piData
+                        HomeFragment.pi = piData
 
 
                         if (piData == "") {
@@ -213,26 +219,28 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun updateDataSensor(spo2: String, bpm: String, pi: String) = CoroutineScope(Dispatchers.IO).launch {
 
-        val token = preference.getValue("token")
+    private fun insertDataSensor(spo2: String, bpm: String, pi: String) =
+        CoroutineScope(Dispatchers.IO).launch {
 
-        RetrofitBuilder(Constant.BASE_URL).api.updateSensor(spo2, bpm, pi, "bearer $token")
-            .enqueue(object :
-                Callback<SensorResponse> {
+            val token = preference.getValue("token")
 
-                override fun onFailure(call: Call<SensorResponse>, t: Throwable) {
-                    Log.d("update sensor", t.toString())
-                }
+           RetrofitBuilder(Constant.BASE_URL).api.insertSensorData(bpm, spo2, pi, "Bearer $token")
+               .enqueue(object : Callback<SensorResponse> {
+                   override fun onFailure(call: Call<SensorResponse>, t: Throwable) {
 
-                override fun onResponse(
-                    call: Call<SensorResponse>,
-                    response: Response<SensorResponse>
-                ) {
-                    Log.d("update sensor", response.toString())
-                }
-            })
-    }
+                   }
+
+                   override fun onResponse(
+                       call: Call<SensorResponse>,
+                       response: Response<SensorResponse>
+                   ) {
+
+                   }
+               })
+        }
+
+
 
     // setup progerssbar
     private fun setProgressBar(value: Float) {

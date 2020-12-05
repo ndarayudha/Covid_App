@@ -18,6 +18,7 @@ import com.example.appkp.ui.dashboard.fragment.dialog.OptionLogoutDIalog
 import com.example.appkp.ui.dashboard.fragment.profil.ProfilFragment
 import com.example.appkp.util.Constant
 import com.example.appkp.util.Preferences
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_setting.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,8 +43,8 @@ class SettingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         preference = Preferences(view.context)
+
 
 
         cardView_edt_profil.setOnClickListener {

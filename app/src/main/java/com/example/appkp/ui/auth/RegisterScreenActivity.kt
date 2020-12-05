@@ -45,7 +45,7 @@ class RegisterScreenActivity : AppCompatActivity(), IResult {
             val register = registerPresenter.onRegister(email, password, name)
 
             if (register) {
-                RetrofitBuilder(Constant.BASE_URL).api.onRegister(email, name, password)
+                RetrofitBuilder(Constant.BASE_URL).api.onRegister(email, name, password, password)
                     .enqueue(object : Callback<AuthResponse> {
 
                         override fun onFailure(call: Call<AuthResponse>, t: Throwable) {

@@ -74,7 +74,7 @@
                         android:layout_height="70dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="20dp"
-                        android:src="@drawable/userimage"
+                        android:src="@drawable/p_alfin"
                         app:civ_border_color="@color/colorWhite"
                         app:civ_border_width="2dp"
                         app:layout_constraintEnd_toEndOf="parent"

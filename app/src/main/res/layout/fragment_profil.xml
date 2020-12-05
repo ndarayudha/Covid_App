@@ -16,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -25,6 +26,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
 
             <FrameLayout
                 android:id="@+id/frameLayout2"
@@ -76,160 +78,249 @@
                     app:cardBackgroundColor="@color/colorWhite"
                     app:shapeAppearance="@style/Corner.Profil_Bottom">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="80dp"
-                        android:hint="Nama"
-                        app:endIconMode="clear_text"
-                        app:boxStrokeColor="@color/colorPrimary"
-                        app:hintAnimationEnabled="true"
-                        app:hintTextColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:placeholderTextColor="@color/colorPrimary"
-                        app:startIconDrawable="@drawable/ic_account_circle_24px"
-                        app:startIconTint="@color/colorDarkSecondary">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="300dp"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tf_nama"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:cursorVisible="true"
-                            android:lines="1"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:inputType="textPersonName"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="70dp"
+                            android:layout_marginEnd="32dp"
+                            android:hint="Nama"
+                            android:visibility="gone"
+                            app:boxStrokeColor="@color/colorPrimary"
+                            app:endIconMode="clear_text"
+                            app:hintAnimationEnabled="true"
+                            app:hintTextColor="@color/colorPrimary"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:placeholderTextColor="@color/colorPrimary"
+                            app:startIconDrawable="@drawable/ic_account_circle_24px"
+                            app:startIconTint="@color/colorDarkSecondary">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_nama"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:cursorVisible="true"
+                                android:inputType="textPersonName"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:singleLine="true" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tf_tanggal"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="32dp"
+                            android:hint="DD-MM-YYYY"
+                            android:visibility="gone"
+                            app:boxStrokeColor="@color/colorPrimary"
+                            app:endIconMode="clear_text"
+                            app:hintAnimationEnabled="true"
+                            app:hintTextColor="@color/colorPrimary"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tf_nama"
+                            app:placeholderTextColor="@color/colorPrimary"
+                            app:startIconDrawable="@drawable/ic_calendar_today_24px"
+                            app:startIconTint="@color/colorDarkSecondary">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_tanggal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:cursorVisible="true"
+                                android:inputType="date"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:singleLine="true" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tf_jenisKelamin"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginEnd="32dp"
+                            android:hint="Jenis Kelamin"
+                            android:visibility="gone"
+                            app:boxStrokeColor="@color/colorPrimary"
+                            app:endIconMode="clear_text"
+                            app:hintAnimationEnabled="true"
+                            app:hintTextColor="@color/colorPrimary"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tf_tanggal"
+                            app:placeholderTextColor="@color/colorPrimary"
+                            app:startIconDrawable="@drawable/ic_calendar_today_24px"
+                            app:startIconTint="@color/colorDarkSecondary">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_jenisKelamin"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:cursorVisible="true"
+                                android:inputType="text"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:singleLine="true" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tf_alamat"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="32dp"
+                            android:hint="Alamat"
+                            android:visibility="gone"
+                            app:boxStrokeColor="@color/colorPrimary"
+                            app:endIconMode="clear_text"
+                            app:hintAnimationEnabled="true"
+                            app:hintTextColor="@color/colorPrimary"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tf_jenisKelamin"
+                            app:placeholderTextColor="@color/colorPrimary"
+                            app:startIconDrawable="@drawable/ic_room_24px"
+                            app:startIconTint="@color/colorDarkSecondary">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_alamat"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:cursorVisible="true"
+                                android:inputType="text"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:singleLine="true" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tf_tinggiBadan"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="32dp"
+                            android:hint="Tinggi Badan"
+                            android:visibility="gone"
+                            app:boxStrokeColor="@color/colorPrimary"
+                            app:endIconMode="clear_text"
+                            app:hintAnimationEnabled="true"
+                            app:hintTextColor="@color/colorPrimary"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tf_alamat"
+                            app:placeholderTextColor="@color/colorPrimary"
+                            app:startIconDrawable="@drawable/ic_room_24px"
+                            app:startIconTint="@color/colorDarkSecondary">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_tinggiBadan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:cursorVisible="true"
+                                android:inputType="number"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:singleLine="true" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tf_beratBadan"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="32dp"
+                            android:hint="Berat Badan"
+                            android:visibility="gone"
+                            app:boxStrokeColor="@color/colorPrimary"
+                            app:endIconMode="clear_text"
+                            app:hintAnimationEnabled="true"
+                            app:hintTextColor="@color/colorPrimary"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tf_tinggiBadan"
+                            app:placeholderTextColor="@color/colorPrimary"
+                            app:startIconDrawable="@drawable/ic_room_24px"
+                            app:startIconTint="@color/colorDarkSecondary">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_beratBadan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:cursorVisible="true"
+                                android:inputType="number"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:singleLine="true" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_simpanPerubahan"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="32dp"
+                            android:layout_marginEnd="32dp"
+                            android:background="@drawable/btn_style"
+                            android:text="Simpan Perubahan"
+                            android:textAlignment="center"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorWhite"
+                            android:visibility="gone"
+                            app:cornerRadius="50dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tf_beratBadan"
+                            app:shapeAppearance="@color/colorPrimaryLightButton" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBar"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="150dp"
-                        android:hint="Tanggal Lahir"
-                        app:endIconMode="clear_text"
-                        app:boxStrokeColor="@color/colorPrimary"
-                        app:hintAnimationEnabled="true"
-                        app:hintTextColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:placeholderTextColor="@color/colorPrimary"
-                        app:startIconDrawable="@drawable/ic_calendar_today_24px"
-                        app:startIconTint="@color/colorDarkSecondary">
-
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:cursorVisible="true"
-                            android:lines="1"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:inputType="date"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="220dp"
-                        android:hint="Jenis Kelamin"
-                        app:endIconMode="clear_text"
-                        app:boxStrokeColor="@color/colorPrimary"
-                        app:hintAnimationEnabled="true"
-                        app:hintTextColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:placeholderTextColor="@color/colorPrimary"
-                        app:startIconTint="@color/colorDarkSecondary"
-                        app:startIconDrawable="@drawable/ic_iconmonstr_gender_5">
-
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:cursorVisible="true"
-                            android:lines="1"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="290dp"
-                        android:hint="Alamat"
-                        app:endIconMode="clear_text"
-                        app:boxStrokeColor="@color/colorPrimary"
-                        app:hintAnimationEnabled="true"
-                        app:hintTextColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:placeholderTextColor="@color/colorPrimary"
-                        app:startIconTint="@color/colorDarkSecondary"
-                        app:startIconDrawable="@drawable/ic_room_24px">
-
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:cursorVisible="true"
-                            android:lines="1"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="120dp"
-                        android:background="@drawable/btn_style"
-                        android:text="Simpan Perubahan"
-                        android:textAlignment="center"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorWhite"
-                        app:cornerRadius="50dp"
-                        app:shapeAppearance="@color/colorPrimaryLightButton" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 

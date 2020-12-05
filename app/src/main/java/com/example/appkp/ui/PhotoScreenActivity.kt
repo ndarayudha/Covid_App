@@ -12,6 +12,7 @@ import android.view.View
 import com.example.appkp.R
 import com.example.appkp.api.RetrofitBuilder
 import com.example.appkp.model.auth.UserPhotoResponse
+import com.example.appkp.model.auth.UserPhotoResponse2
 import com.example.appkp.ui.auth.view.IResult
 import com.example.appkp.ui.dashboard.DashboardActivity
 import com.example.appkp.util.Constant
@@ -22,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_photo_screen.*
 import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.Response
 import java.io.ByteArrayOutputStream
 
 class PhotoScreenActivity : AppCompatActivity(), IResult {
@@ -125,19 +127,18 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
         val token = preferences.getValue("token")
 
         RetrofitBuilder(Constant.BASE_URL).api.savePhoto(bitmapToString(bitmap), "Bearer $token")
-            .enqueue(object : Callback<UserPhotoResponse> {
-
-                override fun onFailure(call: Call<UserPhotoResponse>, t: Throwable) {
-                    onError("Upload Failed")
+            .enqueue(object : Callback<UserPhotoResponse2> {
+                override fun onFailure(call: Call<UserPhotoResponse2>, t: Throwable) {
+                    onError("Upload Photo Failed")
                 }
 
                 override fun onResponse(
-                    call: Call<UserPhotoResponse>,
-                    response: retrofit2.Response<UserPhotoResponse>
+                    call: Call<UserPhotoResponse2>,
+                    response: Response<UserPhotoResponse2>
                 ) {
                     try {
                         val success = response.body()?.success
-                        val photo = response.body()?.photo
+                        val photo = response.body()?.pasien?.gambar
 
                         if (success!!) {
                             preferences.setValue("photo", photo!!)
@@ -152,6 +153,7 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
                     }
                 }
 
+
             })
     }
 
@@ -159,7 +161,7 @@ class PhotoScreenActivity : AppCompatActivity(), IResult {
     private fun bitmapToString(bitmap: Bitmap?): String {
         if (bitmap != null) {
             val byteArrayOutputStream = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream)
             val array: ByteArray = byteArrayOutputStream.toByteArray()
 
 

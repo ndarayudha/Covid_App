@@ -23,6 +23,9 @@ class Preferences(context: Context){
         return sharePref.getString(key, "")
     }
 
+    fun removeValue(key:String){
+        sharePref.edit().remove(key).apply()
+    }
 
     fun clear() {
         sharePref.edit().clear().apply()

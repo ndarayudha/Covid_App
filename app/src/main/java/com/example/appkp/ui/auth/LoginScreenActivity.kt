@@ -9,6 +9,7 @@ import com.example.appkp.model.auth.AuthResponse
 import com.example.appkp.ui.PhotoScreenActivity
 import com.example.appkp.ui.auth.presenter.LoginPresenter
 import com.example.appkp.ui.auth.view.IResult
+import com.example.appkp.ui.dashboard.DashboardActivity
 import com.example.appkp.util.Constant
 import com.example.appkp.util.Preferences
 import es.dmoral.toasty.Toasty
@@ -76,7 +77,7 @@ class LoginScreenActivity : AppCompatActivity(), IResult {
                                         startActivity(
                                             Intent(
                                                 this@LoginScreenActivity.applicationContext,
-                                                PhotoScreenActivity::class.java
+                                                DashboardActivity::class.java
                                             )
                                         )
                                         finishAffinity()
